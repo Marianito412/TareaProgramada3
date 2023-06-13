@@ -264,7 +264,10 @@ def generarPDF():
     bRegresar.place(x=240, y=210)
    
 
-
+def salirPrograma():
+    messagebox.showinfo(title="COSEVI",message="No olvides gestionar pronto tu licencia")
+    raiz.destroy()
+    
 
 #Ventana principal
 
@@ -292,7 +295,7 @@ bAcerca = Button(raiz, text="Acerca de", width=20, height=3, font=("Arial", 10),
 bAcerca.configure(cursor="hand2")
 bAcerca.place(x=340, y=320)
 
-bSalir = Button(raiz, text="Salir", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray")
+bSalir = Button(raiz, text="Salir", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=salirPrograma)
 bSalir.configure(cursor="hand2")
 bSalir.place(x=240, y=420)
 
