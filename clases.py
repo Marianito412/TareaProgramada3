@@ -208,35 +208,3 @@ class Licencia:
     
     def indicarDatos(self):
         return self.cedula, self.nombreCompleto, self.cedula, self.nombreCompleto, self.nacimiento, self.expedicion, self.vencimiento, self.tipoLicencia, self.tipoSangre, self.esDonador, self.sede, self.puntaje, self.correo
-
-class tipoLicencia:
-    def __init__(self, tipo, subtipo, comentarios, requisitos):
-        self.tipo: str = tipo
-        self.subtipo: str = subtipo
-        self.comentarios: str = comentarios
-        self.requisitos: list = requisitos
-    
-    def __str__(self) -> str:
-        return (f"tipo: {self.tipo}\n"
-                f"Subtipo: {self.subtipo}\n"
-                f"Comentarios: {self.comentarios}\n"
-                f"Requisitos: {self.requisitos}"
-                )
-
-    def getTipo(self):
-        return self.tipo
-    def getSubtipo(self):
-        return self.subtipo
-    def getComentarios(self):
-        return self.comentarios
-    def getRequisitos(self):
-        return self.requisitos
-    
-    def setTipo(self, tipo):
-        self.tipo = tipo
-    def setSubtipo(self, subtipo):
-        self.subtipo = subtipo
-    def setTipo(self, comentarios):
-        self.comentarios = comentarios
-    def setTipo(self, requisitos):
-        self.requisitos = requisitos
