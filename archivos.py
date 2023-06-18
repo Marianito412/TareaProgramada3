@@ -48,5 +48,5 @@ def guardarTexto(pNombre, pExtension, pContenido):
     -pContenido(str): El texto a guardar en el archivo
     Salidas:NA
     """
-    with open(f"{pNombre}{pExtension}", "w", encoding="utf-8") as archivo:
+    with open(f"{pNombre}{pExtension}", "w") as archivo:
         archivo.write(pContenido)

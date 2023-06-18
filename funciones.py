@@ -13,7 +13,6 @@ from clases import Licencia
 import datetime
 import pandas as pd
 
-
 x = datetime.datetime.now()
 
 def crearCedula(pPadron):
@@ -124,6 +123,14 @@ def renovarLicencias(licencias, pCedula):
     print(licencias)
     return licencias
 
+def reporteTipoLicencia(pLicencias):
+    
+    def extraerDatosTipoLicencia(pPersona: Licencia):
+        return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarLicencia()]
+
+    reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "Tipo de licencia"], extraerDatosTipoLicencia, [])
+    archivos.guardarTexto("ReporteTipoLicencia", ".csv", reporte)
+
 def reporteDonador(licencias):
     cedulas=[]
     nombres=[]
@@ -146,9 +153,8 @@ def reporteDonador(licencias):
 
     return licencias
 
-
-
 if __name__ == "__main__":
     lista = crearLicencias([], 10)
-    print(generarReporte(lista, ["Nombre", "Sangre"], lambda x: [x.mostrarNombre(), x.mostrarSangre()], []))
-    #conseguirTipoLicencias()
+    reporteTipoLicencia(lista)
+    #print(generarReporte(lista, ["Nombre", "Sangre"], lambda x: [x.mostrarNombre(), x.mostrarSangre()], []))
+    
