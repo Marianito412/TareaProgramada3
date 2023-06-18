@@ -7,6 +7,8 @@ from tkinter import *
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
+import funciones
+import archivos
 import re
 
 raiz = Tk()
@@ -23,11 +25,7 @@ fondo.pack()
 bg = PhotoImage(file="fondo.png")
 fondo.create_image(0, 0, image=bg, anchor="nw")
 
-
-
-
-
-
+licencias = archivos.lee("Licencias")
 
 def CrearLicencias():
     """

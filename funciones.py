@@ -59,6 +59,21 @@ def conseguirTipoLicencias():
     archivos.guardarTexto("test", ".xml", tagTipo)
     return tipoLicencias
 
+def filtrarLista(pLista, pFiltros=[]):
+    for licencia in pLista:
+        if all([filtro(licencia) for filtro in pFiltros]):
+            yield licencia
+
+def generarFila(pAtributos):
+    separador = ", "
+    return separador.join([str(i) for i in pAtributos])
+
+def generarReporte(pLista: list, pEncabezados: list, pExtraerDatos, pFiltros):
+    archivo = generarFila(pEncabezados) + "\n"
+    for licencia in filtrarLista(pLista, pFiltros):
+        archivo += generarFila(pExtraerDatos(licencia)) + "\n"
+    return archivo
+
 def conseguirEdad(persona: Licencia):
     return int(persona.mostrarNacimiento().split("/")[-1])
 
@@ -73,16 +88,18 @@ def crearLicencias(pLista, pCantidad):
         nuevaLicencia.asignarCedula(crearCedula(pLista))
         nuevaLicencia.asignarNombre(f"{names.get_first_name()} {names.get_last_name()} {names.get_last_name()}")
         nuevaLicencia.asignarNacimiento(f"{random.randint(1,28)}/{random.randint(1,12)}/{random.randint(1900,2023-19)}")
-        nuevaLicencia.asignarExpedicion(datetime.date.today.strftime("%d/%m/%Y"))
-        nuevaLicencia.asignarVencimiento(datetime.date.today.timedelta(years = "3" if conseguirEdad(nuevaLicencia)<25 else "5"))
+        nuevaLicencia.asignarExpedicion(datetime.date.today().strftime("%d/%m/%Y"))
+        nuevaLicencia.asignarVencimiento(datetime.date.today()+ datetime.timedelta(days= 365*3 if conseguirEdad(nuevaLicencia)<25 else 365*5))
         nuevaLicencia.asignarLicencia(random.choice(tipoLicencias))
         nuevaLicencia.asignarSangre(random.choice(["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB"]))
         nuevaLicencia.asignarDonador(bool(random.randint(0,1)))
-        nuevaLicencia.asignarSede()
+        #nuevaLicencia.asignarSede()
         nuevaLicencia.asignarPuntaje(random.randint(0,12))
         nuevaLicencia.asignarCorreo(generarCorreo(nuevaLicencia))
         pLista.append(nuevaLicencia)
     return pLista
 
 if __name__ == "__main__":
-    conseguirTipoLicencias()
+    lista = crearLicencias([], 10)
+    print(generarReporte(lista, ["Nombre", "Sangre"], lambda x: [x.mostrarNombre(), x.mostrarSangre()], []))
+    #conseguirTipoLicencias()
