@@ -11,7 +11,7 @@ import random
 import datetime
 from clases import Licencia
 import datetime
-import pandas as pd
+#import pandas as pd
 
 x = datetime.datetime.now()
 
@@ -131,7 +131,21 @@ def reporteTipoLicencia(pLicencias):
     reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "Tipo de licencia"], extraerDatosTipoLicencia, [])
     archivos.guardarTexto("ReporteTipoLicencia", ".csv", reporte)
 
-def reporteDonador(licencias):
+def reporteDonador(pLicencias):
+
+    def extraerDatosDonantes(pPersona: Licencia):
+        return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarLicencia()]
+
+    def filtrarDonante(pPersona: Licencia):
+        if pPersona.mostrarDonador():
+            return True
+        else:
+            return False
+
+    reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "Tipo de licencia"], extraerDatosDonantes, [filtrarDonante])
+    archivos.guardarTexto("ReporteDonante", ".csv", reporte)
+
+def reporteDonador2(licencias):
     cedulas=[]
     nombres=[]
     tipos=[]
@@ -155,6 +169,6 @@ def reporteDonador(licencias):
 
 if __name__ == "__main__":
     lista = crearLicencias([], 10)
-    reporteTipoLicencia(lista)
+    reporteDonador(lista)
     #print(generarReporte(lista, ["Nombre", "Sangre"], lambda x: [x.mostrarNombre(), x.mostrarSangre()], []))
     

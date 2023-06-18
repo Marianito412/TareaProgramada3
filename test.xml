@@ -3,110 +3,110 @@
 		<nombre >
 			Licencia A1
 		</nombre><comentario >
-			Para bicimotos y motocicletas con cilindrada de hasta 125 cc. En caso de tener motores el√©ctricos o h√≠bridos, la potencia m√°xima no podr√° superar los 11 kilovatios. Asimismo, permite conducir triciclos y cuadraciclos con cilindraje menor a los 250 cc.
+			Para bicimotos y motocicletas con cilindrada de hasta 125 cc. En caso de tener motores elÈctricos o hÌbridos, la potencia m·xima no podr· superar los 11 kilovatios. Asimismo, permite conducir triciclos y cuadraciclos con cilindraje menor a los 250 cc.
 		</comentario><requisitos >
-			Ser mayor de 16 a√±os. Si se es menor de edad, tener la autorizaci√≥n escrita de alguno de los padres o del representante legal, as√≠ como una p√≥liza de seguro que cubra muerte, lesiones, accidente y da√±os a terceros (este seguro debe estar vigente hasta que se cumplan los 18 a√±os).
-			C√©dula o documento de identificaci√≥n del aspirante.
-			Dictamen m√©dico digital para licencia.
-			Realizar examen te√≥rico y examen pr√°ctico para licencia de conducir.
+			Ser mayor de 16 aÒos. Si se es menor de edad, tener la autorizaciÛn escrita de alguno de los padres o del representante legal, asÌ como una pÛliza de seguro que cubra muerte, lesiones, accidente y daÒos a terceros (este seguro debe estar vigente hasta que se cumplan los 18 aÒos).
+			CÈdula o documento de identificaciÛn del aspirante.
+			Dictamen mÈdico digital para licencia.
+			Realizar examen teÛrico y examen pr·ctico para licencia de conducir.
 		</requisitos>
 	</subtipo><subtipo >
 		<nombre >
 			Licencia A2
 		</nombre><comentario >
-			Para bicimotos y motocicletas con cilindrada de hasta 500 cc. Si son de motores el√©ctricos o h√≠bridos, la potencia m√°xima no podr√° superar los 35 kilovatios.
+			Para bicimotos y motocicletas con cilindrada de hasta 500 cc. Si son de motores elÈctricos o hÌbridos, la potencia m·xima no podr· superar los 35 kilovatios.
 		</comentario><requisitos >
-			Ser mayor de 18 a√±os.
-			C√©dula o documento de identificaci√≥n.
-			Dictamen m√©dico digital para licencia.
-			Hacer examen te√≥rico y examen pr√°ctico para licencia de conducir.
+			Ser mayor de 18 aÒos.
+			CÈdula o documento de identificaciÛn.
+			Dictamen mÈdico digital para licencia.
+			Hacer examen teÛrico y examen pr·ctico para licencia de conducir.
 		</requisitos>
 	</subtipo><subtipo >
 		<nombre >
 			Licencia A3
 		</nombre><comentario >
-			Para bicimotos y motocicletas sin l√≠mite de cilindrada o potencia. Es decir, los conductores con esta licencia podr√°n conducir todos los veh√≠culos autorizados para las licencias clase A.
+			Para bicimotos y motocicletas sin lÌmite de cilindrada o potencia. Es decir, los conductores con esta licencia podr·n conducir todos los vehÌculos autorizados para las licencias clase A.
 		</comentario><requisitos >
-			Ser mayor de 18 a√±os.
-			C√©dula o documento de identificaci√≥n original del aspirante.
-			Dictamen m√©dico digital para licencia de conducir clase A3.
-			Hacer examen te√≥rico y examen pr√°ctico para licencia de conducir A3.
+			Ser mayor de 18 aÒos.
+			CÈdula o documento de identificaciÛn original del aspirante.
+			Dictamen mÈdico digital para licencia de conducir clase A3.
+			Hacer examen teÛrico y examen pr·ctico para licencia de conducir A3.
 		</requisitos>
 	</subtipo>
-</tipo><tipo nombre='Licencias de conducir tipo B (autom√≥viles y camiones)'>
+</tipo><tipo nombre='Licencias de conducir tipo B (automÛviles y camiones)'>
 	<subtipo >
 		<nombre >
 			Licencia B1
 		</nombre><comentario >
-			Es la m√°s solicitada de todas, pues es la que permite conducir autom√≥viles livianos, de hasta 4.000 kg de peso bruto o peso m√°ximo autorizado.
+			Es la m·s solicitada de todas, pues es la que permite conducir automÛviles livianos, de hasta 4.000 kg de peso bruto o peso m·ximo autorizado.
 		</comentario><requisitos >
-			Importante: aunque en legislaciones anteriores se permit√≠a, con la licencia B1 ya no se puede manejar ning√∫n tipo de motocicleta.
+			Importante: aunque en legislaciones anteriores se permitÌa, con la licencia B1 ya no se puede manejar ning˙n tipo de motocicleta.
 			
 		</requisitos>
 	</subtipo><subtipo >
 		<nombre >
-			Licencia B2 (cami√≥n peque√±o)
+			Licencia B2 (camiÛn pequeÒo)
 		</nombre><comentario >
-			Para veh√≠culos de hasta 8.000 kg de peso bruto o PMA. Estos veh√≠culos podr√°n ser conducidos con un remolque, siempre y cuando el veh√≠culo, el remolque y la carga en conjunto no excedan los 8.000 kg de peso bruto.
+			Para vehÌculos de hasta 8.000 kg de peso bruto o PMA. Estos vehÌculos podr·n ser conducidos con un remolque, siempre y cuando el vehÌculo, el remolque y la carga en conjunto no excedan los 8.000 kg de peso bruto.
 		</comentario><requisitos >
-			Ser mayor de 20 a√±os.
-			Disponer de una licencia B o C con al menos dos a√±os de expedida.
-			C√©dula o documento de identificaci√≥n.
-			Dictamen m√©dico digital para licencia B".
-			Hacer examen pr√°ctico con un veh√≠culo con el peso adecuado.
+			Ser mayor de 20 aÒos.
+			Disponer de una licencia B o C con al menos dos aÒos de expedida.
+			CÈdula o documento de identificaciÛn.
+			Dictamen mÈdico digital para licencia B".
+			Hacer examen pr·ctico con un vehÌculo con el peso adecuado.
 		</requisitos>
 	</subtipo><subtipo >
 		<nombre >
-			Licencia B3 (cami√≥n pesado)
+			Licencia B3 (camiÛn pesado)
 		</nombre><comentario >
-			Para veh√≠culos de todo peso, excepto para veh√≠culos pesados articulados.
+			Para vehÌculos de todo peso, excepto para vehÌculos pesados articulados.
 		</comentario><requisitos >
-			Ser mayor de 22 a√±os.
-			Contar con licencia B o C con al menos tres a√±os de expedida.
-			C√©dula o documento de identificaci√≥n original.
-			Dictamen m√©dico de tipo digital para licencia B3.
-			Rendir el examen pr√°ctico para esta licencia con un veh√≠culo que tenga el peso adecuado.
+			Ser mayor de 22 aÒos.
+			Contar con licencia B o C con al menos tres aÒos de expedida.
+			CÈdula o documento de identificaciÛn original.
+			Dictamen mÈdico de tipo digital para licencia B3.
+			Rendir el examen pr·ctico para esta licencia con un vehÌculo que tenga el peso adecuado.
 		</requisitos>
 	</subtipo><subtipo >
 		<nombre >
-			Licencia B4 (cami√≥n articulado)
+			Licencia B4 (camiÛn articulado)
 		</nombre><comentario >
-			Para veh√≠culos de todo peso, incluyendo veh√≠culos pesados articulados.
+			Para vehÌculos de todo peso, incluyendo vehÌculos pesados articulados.
 		</comentario><requisitos >
-			Ser mayor de 22 a√±os.
-			Contar con licencia B o C con al menos tres a√±os de expedida.
-			C√©dula o documento de identificaci√≥n.
-			Dictamen m√©dico digital para licencia.
-			Hacer examen pr√°ctico especial con el cami√≥n completo (cabezal y remolque).
+			Ser mayor de 22 aÒos.
+			Contar con licencia B o C con al menos tres aÒos de expedida.
+			CÈdula o documento de identificaciÛn.
+			Dictamen mÈdico digital para licencia.
+			Hacer examen pr·ctico especial con el camiÛn completo (cabezal y remolque).
 		</requisitos>
 	</subtipo>
-</tipo><tipo nombre='Licencias de conducci√≥n tipo C (autob√∫s y taxi)'>
+</tipo><tipo nombre='Licencias de conducciÛn tipo C (autob˙s y taxi)'>
 	<subtipo >
 		<nombre >
 			Licencia C1 (taxi)
 		</nombre><comentario >
-			Permite conducir veh√≠culos en modalidad taxi.
+			Permite conducir vehÌculos en modalidad taxi.
 		</comentario><requisitos >
-			Ser mayor de 18 a√±os.
-			C√©dula o documento de identificaci√≥n.
-			Dictamen m√©dico de tipo digital para licencia C1.
-			Tener licencia tipo B con al menos tres a√±os de expedida.
-			Llevar el curso de educaci√≥n vial para transporte p√∫blico en la DGEV.
+			Ser mayor de 18 aÒos.
+			CÈdula o documento de identificaciÛn.
+			Dictamen mÈdico de tipo digital para licencia C1.
+			Tener licencia tipo B con al menos tres aÒos de expedida.
+			Llevar el curso de educaciÛn vial para transporte p˙blico en la DGEV.
 			
 		</requisitos>
 	</subtipo><subtipo >
 		<nombre >
-			Licencia C2 (autob√∫s)
+			Licencia C2 (autob˙s)
 		</nombre><comentario >
-			Permite conducir veh√≠culos de transporte p√∫blico de personas en modalidad de autob√∫s, buseta y microb√∫s.
+			Permite conducir vehÌculos de transporte p˙blico de personas en modalidad de autob˙s, buseta y microb˙s.
 		</comentario><requisitos >
-			Ser mayor de 18 a√±os.
-			C√©dula o documento de identificaci√≥n.
-			Dictamen m√©dico digital para licencia.
-			Tener licencia tipo B o C1 con al menos tres a√±os de expedida.
-			Hacer el examen pr√°ctico en un veh√≠culo apropiado (buseta o bus).
-			Llevar el curso de educaci√≥n vial para transporte p√∫blico en la DGEV.
-			Los choferes que vayan a trabajar en transporte de estudiantes menores de edad, deben presentar un certificado de delincuencia, pues no pueden tener historial de delitos contra menores ni de conducci√≥n temeraria.
+			Ser mayor de 18 aÒos.
+			CÈdula o documento de identificaciÛn.
+			Dictamen mÈdico digital para licencia.
+			Tener licencia tipo B o C1 con al menos tres aÒos de expedida.
+			Hacer el examen pr·ctico en un vehÌculo apropiado (buseta o bus).
+			Llevar el curso de educaciÛn vial para transporte p˙blico en la DGEV.
+			Los choferes que vayan a trabajar en transporte de estudiantes menores de edad, deben presentar un certificado de delincuencia, pues no pueden tener historial de delitos contra menores ni de conducciÛn temeraria.
 			
 		</requisitos>
 	</subtipo>
@@ -131,7 +131,7 @@
 		<nombre >
 			Licencia D3
 		</nombre><comentario >
-			Autoriza a conducir otros tipos de equipo especial no contemplados en las D1 y D2, como excavadoras de construcci√≥n, aplanadoras o gr√∫as de carga.
+			Autoriza a conducir otros tipos de equipo especial no contemplados en las D1 y D2, como excavadoras de construcciÛn, aplanadoras o gr˙as de carga.
 		</comentario><requisitos >
 			
 		</requisitos>
@@ -141,26 +141,26 @@
 		<nombre >
 			Licencia E1
 		</nombre><comentario >
-			Permite manejar todos los veh√≠culos, excepto los de transporte p√∫blico y los que requieran licencia tipo D.
+			Permite manejar todos los vehÌculos, excepto los de transporte p˙blico y los que requieran licencia tipo D.
 		</comentario><requisitos >
-			C√©dula o documento de identificaci√≥n.
-			Dictamen m√©dico digital para licencia.
-			Aprobar el curso b√°sico de transporte p√∫blico.
-			No hay que hacer examen pr√°ctico, pero debe matricularlo y pagar el derecho. El d√≠a del examen, debe presentar sus documentos de acreditaci√≥n de conductores.
-			Contar con las licencia A3 y B4, con al menos un a√±o de expedidas.
+			CÈdula o documento de identificaciÛn.
+			Dictamen mÈdico digital para licencia.
+			Aprobar el curso b·sico de transporte p˙blico.
+			No hay que hacer examen pr·ctico, pero debe matricularlo y pagar el derecho. El dÌa del examen, debe presentar sus documentos de acreditaciÛn de conductores.
+			Contar con las licencia A3 y B4, con al menos un aÒo de expedidas.
 			
 		</requisitos>
 	</subtipo><subtipo >
 		<nombre >
 			Licencia E2
 		</nombre><comentario >
-			Permite manejar todo tipo de veh√≠culo, excepto los de transporte p√∫blico.
+			Permite manejar todo tipo de vehÌculo, excepto los de transporte p˙blico.
 		</comentario><requisitos >
-			C√©dula o documento de identificaci√≥n.
-			Dictamen m√©dico digital para licencia.
-			Aprobar el curso b√°sico de transporte p√∫blico.
-			No hay que hacer examen pr√°ctico, pero debe matricularlo y pagar el derecho. El d√≠a del examen, debe presentar sus documentos de acreditaci√≥n de conductores.
-			Contar con licencias A3 y B4, con al menos un a√±o de expedidas. Tambi√©n tener las licencias D-1, D-2 y D-3.
+			CÈdula o documento de identificaciÛn.
+			Dictamen mÈdico digital para licencia.
+			Aprobar el curso b·sico de transporte p˙blico.
+			No hay que hacer examen pr·ctico, pero debe matricularlo y pagar el derecho. El dÌa del examen, debe presentar sus documentos de acreditaciÛn de conductores.
+			Contar con licencias A3 y B4, con al menos un aÒo de expedidas. TambiÈn tener las licencias D-1, D-2 y D-3.
 		</requisitos>
 	</subtipo>
 </tipo>
