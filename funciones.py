@@ -11,6 +11,8 @@ import random
 import datetime
 from clases import Licencia
 import datetime
+import pandas as pd
+from pandas import ExcelWriter
 
 x = datetime.datetime.now()
 
@@ -79,7 +81,7 @@ def generarReporte(pLista: list, pEncabezados: list, pExtraerDatos, pFiltros):
     return archivo
 
 def conseguirEdad(persona: Licencia):
-    return int(persona.mostrarNacimiento().split("/")[-1])
+    return int(persona.mostrarNacimiento().split("-")[-1])
 
 def generarCorreo(persona: Licencia):
     nombres = persona.mostrarNombre().split(" ")
@@ -91,12 +93,13 @@ def crearLicencias(pLista, pCantidad):
         nuevaLicencia = Licencia()
         nuevaLicencia.asignarCedula(crearCedula(pLista))
         nuevaLicencia.asignarNombre(f"{names.get_first_name()} {names.get_last_name()} {names.get_last_name()}")
-        nuevaLicencia.asignarNacimiento(f"{random.randint(1,28)}/{random.randint(1,12)}/{random.randint(1900,2023-19)}")
-        nuevaLicencia.asignarExpedicion(datetime.date.today().strftime("%d/%m/%Y"))
+        nuevaLicencia.asignarNacimiento(f"{random.randint(1,28)}-{random.randint(1,12)}-{random.randint(1900,2023-19)}")
+        nuevaLicencia.asignarExpedicion(datetime.date.today().strftime("%d-%m-%Y"))
         nuevaLicencia.asignarVencimiento(datetime.date.today()+ datetime.timedelta(days= 365*3 if conseguirEdad(nuevaLicencia)<25 else 365*5))
         nuevaLicencia.asignarLicencia(random.choice(tipoLicencias))
         nuevaLicencia.asignarSangre(random.choice(["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB"]))
         nuevaLicencia.asignarDonador(bool(random.randint(0,1)))
+
         #nuevaLicencia.asignarSede()
         nuevaLicencia.asignarPuntaje(random.randint(0,12))
         nuevaLicencia.asignarCorreo(generarCorreo(nuevaLicencia))
@@ -120,6 +123,18 @@ def renovarLicencias(licencias, pCedula):
             print(persona.indicarDatos())
     print(licencias)
     return licencias
+
+def reporteDonador(licencias):
+    for persona in licencias:
+        if persona.mostrarCedula() == pCedula:
+    # decodigo.com
+    df = pd.DataFrame({'Id': [1, 3, 2, 4],
+                    'Nombre': ['Juan', 'Eva', 'María', 'Pablo'],
+                    'Apellido': ['Méndez', 'López', 'Tito', 'Hernández']})
+    df = df[['Id', 'Nombre', 'Apellido']]
+    writer = ExcelWriter('/ruta/ejemplo.xlsx')
+    df.to_excel(writer, 'Hoja de datos', index=False)
+    writer.save()
 
 
 

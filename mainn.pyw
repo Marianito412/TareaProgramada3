@@ -7,8 +7,6 @@ from tkinter import *
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
-import funciones
-import archivos
 import re
 import funciones
 from clases import Licencia
@@ -28,9 +26,13 @@ fondo.pack()
 bg = PhotoImage(file="fondo.png")
 fondo.create_image(0, 0, image=bg, anchor="nw")
 
-licencias = archivos.lee("Licencias")
 
-def CrearLicencias():
+
+licencias=[]
+
+
+
+def opcionCrearLicencias():
     """
     Funcionalidad: Menú para crear una cantidad de personas e incluirlas en el padrón
     """
@@ -292,7 +294,7 @@ def menuReportes():
     bTotalLic.configure(cursor="hand2")
     bTotalLic.place(x=130, y=120)
 
-    bTipoLic = Button(CReportes, text="Por tipo de licencia", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=OpcionCrearLicencias)
+    bTipoLic = Button(CReportes, text="Por tipo de licencia", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=opcionCrearLicencias)
     bTipoLic.configure(cursor="hand2")
     bTipoLic.place(x=340, y=120)
 
@@ -328,7 +330,7 @@ bXML = Button(raiz, text="Crear XML", width=20, height=3, font=("Arial", 10), ac
 bXML.configure(cursor="hand2")
 bXML.place(x=130, y=120)
 
-bLicencias = Button(raiz, text="Crear licencias", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=OpcionCrearLicencias)
+bLicencias = Button(raiz, text="Crear licencias", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=opcionCrearLicencias)
 bLicencias.configure(cursor="hand2")
 bLicencias.place(x=340, y=120)
 
