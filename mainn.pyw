@@ -7,6 +7,8 @@ from tkinter import *
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
+import funciones
+import archivos
 import re
 import funciones
 from clases import Licencia
@@ -26,13 +28,9 @@ fondo.pack()
 bg = PhotoImage(file="fondo.png")
 fondo.create_image(0, 0, image=bg, anchor="nw")
 
+licencias = archivos.lee("Licencias")
 
-
-licencias=[]
-
-
-
-def OpcionCrearLicencias():
+def CrearLicencias():
     """
     Funcionalidad: Menú para crear una cantidad de personas e incluirlas en el padrón
     """
