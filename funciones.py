@@ -8,6 +8,7 @@ import requests
 import archivos
 import names
 import random
+import datetime
 from clases import Licencia
 
 def crearCedula(pPadron):
@@ -58,12 +59,28 @@ def conseguirTipoLicencias():
     archivos.guardarTexto("test", ".xml", tagTipo)
     return tipoLicencias
 
+def conseguirEdad(persona: Licencia):
+    return int(persona.mostrarNacimiento().split("/")[-1])
+
+def generarCorreo(persona: Licencia):
+    nombres = persona.mostrarNombre().split(" ")
+    return f"{nombres[1]}{nombres[2][0]}{nombres[0][0]}@gmail.com"
+
 def crearLicencias(pLista, pCantidad):
+    tipoLicencias = conseguirTipoLicencias()
     for i in range(pCantidad):
         nuevaLicencia = Licencia()
         nuevaLicencia.asignarCedula(crearCedula(pLista))
         nuevaLicencia.asignarNombre(f"{names.get_first_name()} {names.get_last_name()} {names.get_last_name()}")
         nuevaLicencia.asignarNacimiento(f"{random.randint(1,28)}/{random.randint(1,12)}/{random.randint(1900,2023-19)}")
+        nuevaLicencia.asignarExpedicion(datetime.date.today.strftime("%d/%m/%Y"))
+        nuevaLicencia.asignarVencimiento(datetime.date.today.timedelta(years = "3" if conseguirEdad(nuevaLicencia)<25 else "5"))
+        nuevaLicencia.asignarLicencia(random.choice(tipoLicencias))
+        nuevaLicencia.asignarSangre(random.choice(["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB"]))
+        nuevaLicencia.asignarDonador(bool(random.randint(0,1)))
+        nuevaLicencia.asignarSede()
+        nuevaLicencia.asignarPuntaje(random.randint(0,12))
+        nuevaLicencia.asignarCorreo(generarCorreo(nuevaLicencia))
         pLista.append(nuevaLicencia)
     return pLista
 
