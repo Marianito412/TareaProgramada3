@@ -207,4 +207,4 @@ class Licencia:
         return self.correo
     
     def indicarDatos(self):
-        return self.cedula, self.nombreCompleto, self.cedula, self.nombreCompleto, self.nacimiento, self.expedicion, self.vencimiento, self.tipoLicencia, self.tipoSangre, self.esDonador, self.sede, self.puntaje, self.correo
+        return self.cedula, self.nombreCompleto, self.nacimiento, self.expedicion, self.vencimiento, self.tipoLicencia, self.tipoSangre, self.esDonador, self.sede, self.puntaje, self.correo
