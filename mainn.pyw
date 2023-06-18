@@ -290,6 +290,9 @@ def menuReportes():
     texto = Label(CReportes, text="Renovar licencia", bg="white", font=("Arial", 15))
     texto.place(x=130, y=30)
 
+    def procesoDonantes():
+        funciones.reporteDonador(licencias)
+
     bTotalLic = Button(CReportes, text="Totalidad de licencias", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray")
     bTotalLic.configure(cursor="hand2")
     bTotalLic.place(x=130, y=120)
@@ -302,7 +305,7 @@ def menuReportes():
     bExamenSan.configure(cursor="hand2")
     bExamenSan.place(x=130, y=220)
 
-    bDonantes = Button(CReportes, text="Donantes de órganos", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=generarPDF)
+    bDonantes = Button(CReportes, text="Donantes de órganos", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=procesoDonantes)
     bDonantes.configure(cursor="hand2")
     bDonantes.place(x=340, y=220)
 

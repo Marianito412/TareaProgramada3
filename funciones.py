@@ -12,7 +12,7 @@ import datetime
 from clases import Licencia
 import datetime
 import pandas as pd
-from pandas import ExcelWriter
+
 
 x = datetime.datetime.now()
 
@@ -125,16 +125,26 @@ def renovarLicencias(licencias, pCedula):
     return licencias
 
 def reporteDonador(licencias):
+    cedulas=[]
+    nombres=[]
+    tipos=[]
     for persona in licencias:
-        if persona.mostrarCedula() == pCedula:
-    # decodigo.com
-    df = pd.DataFrame({'Id': [1, 3, 2, 4],
-                    'Nombre': ['Juan', 'Eva', 'María', 'Pablo'],
-                    'Apellido': ['Méndez', 'López', 'Tito', 'Hernández']})
-    df = df[['Id', 'Nombre', 'Apellido']]
-    writer = ExcelWriter('/ruta/ejemplo.xlsx')
+        if persona.mostrarDonador():
+            cedulas.append(persona.mostrarCedula())
+            nombres.append(persona.mostrarNombre())
+            tipos.append(persona.mostrarLicencia())
+            
+    file_path = 'C:/Users/Usuario/Documents/GitHub/TareaProgramada3.xlsx'
+    writer = pd.ExcelWriter(file_path)
+    df = pd.DataFrame({'Cedula': cedulas,
+                    'Nombre': nombres,
+                    'TipoLicen': tipos})
+    #df = df[['Id', 'Nombre', 'Apellido']]
+    #writer = ExcelWriter('C:/Users/Usuario/Documents/GitHub/TareaProgramada3.xlsx')
     df.to_excel(writer, 'Hoja de datos', index=False)
-    writer.save()
+    writer.close()
+
+    return licencias
 
 
 
