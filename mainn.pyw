@@ -30,6 +30,10 @@ fondo.create_image(0, 0, image=bg, anchor="nw")
 
 licencias=[]
 
+flagDonantes= True
+flagTipoLic= True
+flagLicAnulada= True
+
 
 
 def opcionCrearLicencias():
@@ -291,13 +295,40 @@ def menuReportes():
     texto.place(x=130, y=30)
 
     def procesoDonantes():
-        funciones.reporteDonador(licencias)
+        global flagDonantes
+        if flagDonantes==True:
+            funciones.reporteDonador(licencias)
+            messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
+        else:
+            messagebox.showinfo(title="Verificacion",message="El documento ya existe")
+        flagDonantes=False
+        
+    def procesoTipoLic():
+        global flagTipoLic
+        if flagTipoLic==True:
+            funciones.reporteTipoLicencia(licencias)
+            messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
+        else:
+            messagebox.showinfo(title="Verificacion",message="El documento ya existe")
+        flagTipoLic=False
+
+    def procesoLicAnulada():
+        global flagLicAnulada
+        if flagLicAnulada==True:
+            funciones.reporteAnulado(licencias)
+            messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
+        else:
+            messagebox.showinfo(title="Verificacion",message="El documento ya existe")
+        flagLicAnulada=False
+
+    def salirProgramaReportes():
+        CReportes.destroy()
 
     bTotalLic = Button(CReportes, text="Totalidad de licencias", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray")
     bTotalLic.configure(cursor="hand2")
     bTotalLic.place(x=130, y=120)
 
-    bTipoLic = Button(CReportes, text="Por tipo de licencia", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=opcionCrearLicencias)
+    bTipoLic = Button(CReportes, text="Por tipo de licencia", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=procesoTipoLic)
     bTipoLic.configure(cursor="hand2")
     bTipoLic.place(x=340, y=120)
 
@@ -309,7 +340,7 @@ def menuReportes():
     bDonantes.configure(cursor="hand2")
     bDonantes.place(x=340, y=220)
 
-    bLicAnulada = Button(CReportes, text="Licencia anulada", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray")
+    bLicAnulada = Button(CReportes, text="Licencia anulada", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=procesoLicAnulada)
     bLicAnulada.configure(cursor="hand2")
     bLicAnulada.place(x=130, y=320)
 
@@ -317,7 +348,7 @@ def menuReportes():
     bLicSede.configure(cursor="hand2")
     bLicSede.place(x=340, y=320)
 
-    bSalir = Button(CReportes, text="Salir", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=salirPrograma)
+    bSalir = Button(CReportes, text="Salir", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=salirProgramaReportes)
     bSalir.configure(cursor="hand2")
     bSalir.place(x=240, y=420)
     

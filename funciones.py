@@ -132,40 +132,32 @@ def reporteTipoLicencia(pLicencias):
     archivos.guardarTexto("ReporteTipoLicencia", ".csv", reporte)
 
 def reporteDonador(pLicencias):
-
     def extraerDatosDonantes(pPersona: Licencia):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarLicencia()]
-
     def filtrarDonante(pPersona: Licencia):
         if pPersona.mostrarDonador():
             return True
         else:
             return False
-
     reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "Tipo de licencia"], extraerDatosDonantes, [filtrarDonante])
     archivos.guardarTexto("ReporteDonante", ".csv", reporte)
 
-def reporteDonador2(licencias):
-    cedulas=[]
-    nombres=[]
-    tipos=[]
-    for persona in licencias:
-        if persona.mostrarDonador():
-            cedulas.append(persona.mostrarCedula())
-            nombres.append(persona.mostrarNombre())
-            tipos.append(persona.mostrarLicencia())
-            
-    file_path = 'C:/Users/Usuario/Documents/GitHub/TareaProgramada3.xlsx'
-    writer = pd.ExcelWriter(file_path)
-    df = pd.DataFrame({'Cedula': cedulas,
-                    'Nombre': nombres,
-                    'TipoLicen': tipos})
-    #df = df[['Id', 'Nombre', 'Apellido']]
-    #writer = ExcelWriter('C:/Users/Usuario/Documents/GitHub/TareaProgramada3.xlsx')
-    df.to_excel(writer, 'Hoja de datos', index=False)
-    writer.close()
+def reporteAnulado(pLicencias):
+    def cambioDonador(pDato):
+        if pDato== False:
+            return "No es donador"
+        else:
+            return "Es donador"
+    def extraerDatosAnulados(pPersona: Licencia):
+        return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede()]
+    def filtrarAnulado(pPersona: Licencia):
+        if pPersona.mostrarPuntaje()==0:
+            return True
+        else:
+            return False
+    reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "FechaNac", "FechaExp", "FechaVenc", "TipoLicen", "TipoSangre", "Donador", "Sede"], extraerDatosAnulados, [filtrarAnulado])
+    archivos.guardarTexto("ReporteAnulado", ".csv", reporte)
 
-    return licencias
 
 if __name__ == "__main__":
     lista = crearLicencias([], 10)
