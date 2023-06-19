@@ -322,13 +322,17 @@ def menuReportes():
         flagLicAnulada=False
 
     def reporteLicSede():
-    """
-    Funcionalidad: Muestar un menú para poder solicitar un reporte de una sede específica
-    """
+        """
+        Funcionalidad: Muestar un menú para poder solicitar un reporte de una sede específica
+        """
+
+        def procesoLicSedes(pOpcion):
+            if pOpcion== 
+        
         def activarBotonSede(event):
-        """
-        Funcionalidad: Activa el botón para buscar solo si la sede a buscar no es vacía
-        """
+            """
+            Funcionalidad: Activa el botón para buscar solo si la sede a buscar no es vacía
+            """
             if event.widget.get() != "":
                 bConsultar.configure(state=tk.NORMAL)
             else:
@@ -337,18 +341,19 @@ def menuReportes():
         repSede = tk.Toplevel()
         repSede.title("Reporte por sede")
         repSede.configure(bg="white")
-        repSede.iconbitmap("logo-TEC.ico")
         repSede.resizable(True, True)
         repSede.grab_set()
+        repSede.geometry("400x400")
 
-        sedes, codigos = archivos.leerSedes()
-
-        opciones = [funciones.traducirCodigo(sede) for sede in sedes.keys()]
-        cajaOpciones= ttk.Combobox(repSede, values=opciones)
+        texto = Label(repSede, text="Seleccione la opcion con la sede a consultar", bg="white", font=("Arial", 10))
+        texto.place(x=60, y=40)
+        
+        
+        cajaOpciones= ttk.Combobox(repSede, values=["Python", "C", "C++", "Java"])
         cajaOpciones.bind("<<ComboboxSelected>>", activarBotonSede)
-        cajaOpciones.grid(row=0, column=0)
-        bConsultar = Button(repSede, text="Consultar", state=tk.DISABLED ,width=20, height=2, font=("Arial", 10), activebackground="lightgreen",bg="lightblue", command=lambda : tablaRepSede(cajaOpciones.get()))
-        bConsultar.grid(row=0,column=1)
+        cajaOpciones.place(x=70, y=200)
+        bConsultar = Button(repSede, text="Consultar", state=tk.DISABLED ,width=10, height=2, font=("Arial", 8), activebackground="lightgreen",bg="lightblue", command=lambda : tablaRepSede(cajaOpciones.get()))
+        bConsultar.place(x=220, y=200)
 
     def salirProgramaReportes():
         CReportes.destroy()
@@ -373,7 +378,7 @@ def menuReportes():
     bLicAnulada.configure(cursor="hand2")
     bLicAnulada.place(x=130, y=320)
 
-    bLicSede = Button(CReportes, text="Licencias por sede", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray")
+    bLicSede = Button(CReportes, text="Licencias por sede", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=reporteLicSede)
     bLicSede.configure(cursor="hand2")
     bLicSede.place(x=340, y=320)
 
