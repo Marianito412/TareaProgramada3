@@ -321,6 +321,35 @@ def menuReportes():
             messagebox.showinfo(title="Verificacion",message="El documento ya existe")
         flagLicAnulada=False
 
+    def reporteLicSede():
+    """
+    Funcionalidad: Muestar un menú para poder solicitar un reporte de una sede específica
+    """
+        def activarBotonSede(event):
+        """
+        Funcionalidad: Activa el botón para buscar solo si la sede a buscar no es vacía
+        """
+            if event.widget.get() != "":
+                bConsultar.configure(state=tk.NORMAL)
+            else:
+                bConsultar.configure(state=tk.DISABLED)
+
+        repSede = tk.Toplevel()
+        repSede.title("Reporte por sede")
+        repSede.configure(bg="white")
+        repSede.iconbitmap("logo-TEC.ico")
+        repSede.resizable(True, True)
+        repSede.grab_set()
+
+        sedes, codigos = archivos.leerSedes()
+
+        opciones = [funciones.traducirCodigo(sede) for sede in sedes.keys()]
+        cajaOpciones= ttk.Combobox(repSede, values=opciones)
+        cajaOpciones.bind("<<ComboboxSelected>>", activarBotonSede)
+        cajaOpciones.grid(row=0, column=0)
+        bConsultar = Button(repSede, text="Consultar", state=tk.DISABLED ,width=20, height=2, font=("Arial", 10), activebackground="lightgreen",bg="lightblue", command=lambda : tablaRepSede(cajaOpciones.get()))
+        bConsultar.grid(row=0,column=1)
+
     def salirProgramaReportes():
         CReportes.destroy()
 
