@@ -127,6 +127,9 @@ def opcionCrearLicencias():
     bRegresar.place(x=240, y=210)
 
 def opcionCrearXML():
+    """
+    Funcionalidad: Generar XML y conseguir los tipos de licencias
+    """
     funciones.conseguirTipoLicencias()
     messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
 
