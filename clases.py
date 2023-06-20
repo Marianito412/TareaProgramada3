@@ -207,4 +207,9 @@ class Licencia:
         return self.correo
     
     def indicarDatos(self):
+        """
+        Funcionalidad: Muestra todos los atributos
+        Entradas: NA
+        Salidas: Lista de atributos
+        """
         return self.cedula, self.nombreCompleto, self.nacimiento, self.expedicion, self.vencimiento, self.tipoLicencia, self.tipoSangre, self.esDonador, self.sede, self.puntaje, self.correo
