@@ -8,6 +8,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 import re
+import archivos
 import funciones
 from clases import Licencia
 
@@ -25,7 +26,8 @@ fondo.pack()
 bg = PhotoImage(file="fondo.png")
 fondo.create_image(0, 0, image=bg, anchor="nw")
 
-licencias=[]
+licencias = archivos.lee("Licencias")
+archivos.graba("Licencias", licencias)
 
 flagReporteTotal= True
 flagDonantes= True
@@ -115,6 +117,7 @@ def opcionCrearLicencias():
         -pNumero: numero de personas a agregar
         """
         funciones.crearLicencias(licencias, int(pNumero))
+        archivos.graba("Licencias", licencias)
         messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
         limpiarDatos2()
 
@@ -206,17 +209,17 @@ def Renovar():
         -pPadron: padron de personas
         -pNumero: numero de personas a agregar
         """
-
         for persona in licencias:
                 if persona.mostrarCedula()==FCedula.get():
                     if persona.mostrarPuntaje()== 0:
+                        archivos.graba("Licencias", licencias)
                         messagebox.showwarning(title="Verificacion",message="No se puede renovar porque su puntaje es 0")
                         limpiarDatos2()
                     else:
                         funciones.renovarLicencias(licencias, FCedula.get())
+                        archivos.graba("Licencias", licencias)
                         messagebox.showinfo(title="Verificacion",message="Se ha renovado con exito")
                         limpiarDatos2()
-        
 
     bLimpiar = Button(CRenovar, text="Limpiar", width=8, height=1, font=("Arial", 8), activebackground="lightpink",bg="lightgray",command=limpiarDatos2)
     bLimpiar.configure(cursor="hand2")

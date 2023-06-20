@@ -3,6 +3,7 @@
 #Ultima version: 04/06/2023 1:30pm
 #Version: 3.10.6
 
+#Importación de bibliotecas
 import bs4
 import requests
 import archivos
@@ -15,6 +16,7 @@ import pdfkit
 
 x = datetime.datetime.now()
 
+#Definición de funciones
 def crearCedula(pPadron):
     """
     Funcionalidad: Crea una cédula única
@@ -181,31 +183,31 @@ def determinarSede(pPersona: Licencia):
     """
     provincia = int(pPersona.mostrarCedula()[0])
     sedesPorProvincia = {
-        1:["Dirección General de Educación Vial, licencias sede central",
-           "Dirección General de Educación Vial, licencias Heredia"],
+        1:["Dirección General de Educación Vial licencias sede central",
+           "Dirección General de Educación Vial licencias Heredia"],
 
-        8:["Dirección General de Educación Vial, licencias sede central",
-            "Dirección General de Educación Vial, licencias Heredia"],
+        8:["Dirección General de Educación Vial licencias sede central",
+            "Dirección General de Educación Vial licencias Heredia"],
 
-        9:["Dirección General de Educación Vial, licencias sede central",
-           "Dirección General de Educación Vial, licencias Heredia"],
+        9:["Dirección General de Educación Vial licencias sede central",
+           "Dirección General de Educación Vial licencias Heredia"],
 
-        2:["Dirección General de Educación Vial, licencias San Carlos",
-            "Dirección General de Educación Vial, licencias Alajuela",
-            "Dirección General de Educación Vial, licencias San Ramón"],
+        2:["Dirección General de Educación Vial licencias San Carlos",
+            "Dirección General de Educación Vial licencias Alajuela",
+            "Dirección General de Educación Vial licencias San Ramón"],
 
-        3:["Dirección General de Educación Vial, licencias Cartago"],
+        3:["Dirección General de Educación Vial licencias Cartago"],
 
-        4:["Dirección General de Educación Vial, licencias Heredia"],
+        4:["Dirección General de Educación Vial licencias Heredia"],
 
-        5:["Dirección General de Educación Vial, licencias Liberia",
-           "Dirección General de Educación Vial, licencias Nicoya"],
+        5:["Dirección General de Educación Vial licencias Liberia",
+           "Dirección General de Educación Vial licencias Nicoya"],
 
-        6:["Dirección General de Educación Vial, licencias Puntarenas",
-           "Dirección General de Educación Vial, licencias Rio Claro"],
+        6:["Dirección General de Educación Vial licencias Puntarenas",
+           "Dirección General de Educación Vial licencias Rio Claro"],
 
-        7:["Dirección General de Educación Vial, licencias Guapiles",
-           "Dirección General de Educación Vial, licencias Limón"]
+        7:["Dirección General de Educación Vial licencias Guapiles",
+           "Dirección General de Educación Vial licencias Limón"]
     }
     return random.choice(sedesPorProvincia[provincia])
 
@@ -271,8 +273,8 @@ def reporteTipoLicencia(pLicencias, tipoLicencia):
     def extraerDatosTipoLicencia(pPersona: Licencia):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarLicencia()]
 
-    reporte = generarReporte(pLicencias, ["Cedula", "Nombre", "Tipo de licencia"], extraerDatosTipoLicencia, [lambda x: x.mostrarLicencia()==tipoLicencia])
-    archivos.guardarTexto(f"Reporte{tipoLicencia}", ".csv", reporte, encoding="utf-8")
+    reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "Tipo de licencia"], extraerDatosTipoLicencia, [lambda x: x.mostrarLicencia()==tipoLicencia])
+    archivos.guardarTexto(f"Reporte{tipoLicencia}", ".csv", reporte)
 
 def reporteSancion(pLicencias):
     """
@@ -283,9 +285,10 @@ def reporteSancion(pLicencias):
     """
     def extraerDatosSancion(pPersona: Licencia):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarLicencia(), pPersona.mostrarPuntaje()]
+    
+    reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "Tipo de licencia", "Puntaje"], extraerDatosSancion, [lambda x: x.mostrarPuntaje()<=6 and x.mostrarPuntaje()>0])
+    archivos.guardarTexto("ReporteSanción", ".csv", reporte)
 
-    reporte = generarReporte(pLicencias, ["Cedula", "Nombre", "Tipo de licencia", "Puntaje"], extraerDatosSancion, [lambda x: x.mostrarPuntaje()<=6 and x.mostrarPuntaje()>0])
-    archivos.guardarTexto("ReporteSanción", ".csv", reporte, encoding="utf-8")
 
 def reporteTotal(pLicencias):
     """
@@ -298,7 +301,7 @@ def reporteTotal(pLicencias):
         return pPersona.indicarDatos()
 
     reporte = generarReporte(pLicencias, ['Cédula', 'Nombre', 'FechaNac', 'FechaExp', 'FechaVenc', 'TipoLicen', 'TipoSangre', 'Donador', 'Sede', 'Puntaje'], extraerDatosTotal, [])
-    archivos.guardarTexto("ReporteTotal", ".csv", reporte, encoding="utf-8")
+    archivos.guardarTexto("ReporteTotal", ".csv", reporte)
 
 def reporteDonador(pLicencias):
     """
