@@ -50,29 +50,35 @@ flagReporteSedePerezZeledon= True
 flagReporteSedeGolfito= True
 
 #Definición de funciones
+ba = PhotoImage() 
 def opcionCrearLicencias():
     """
     Funcionalidad: Menú para crear una cantidad de personas e incluirlas en el padrón
     """
     Clicencias = tk.Toplevel()
-    Clicencias.title("Reporte por tipo de licencia")
+    Clicencias.title("Crear licencias")
     Clicencias.configure(bg="white")
     Clicencias.iconbitmap("Cosevi.ico")
     Clicencias.resizable(False, False)
     Clicencias.geometry("400x400")
     Clicencias.grab_set()
 
-    texto = Label(Clicencias, text="Reporte por tipo de licencia", bg="white", font=("Arial", 15))
-    texto.place(x=130, y=30)
+    global ba
+    ba.configure(file = "Crearlicencias.png")
+    ba1 = Canvas(Clicencias, width=400, height=400, bg="white")
+    ba1.pack()
+
+    ba1.create_image(0, 0, image=ba, anchor="nw")
+
 
     textoPadron = Label(Clicencias,pady=15, text="¿A cuántos personas desea crear licencias?", bg="white", font=("Arial", 10),)
-    textoPadron.place(x=70, y=80)
+    textoPadron.place(x=70, y=100)
 
     FCantidad = Entry(Clicencias)
 
     BTCrear = Button(Clicencias, text="Generar",width=8, height=1, font=("Arial", 8), activebackground="lightpink",bg="lightgray", command=lambda: procesoLicencias(licencias, int(FCantidad.get())))
     BTCrear.configure(cursor="hand2")
-    BTCrear.place(x=100, y=210)
+    BTCrear.place(x=100, y=240)
     BTCrear.configure(state=tk.DISABLED)
 
     def limpiarDatos2():
@@ -102,11 +108,11 @@ def opcionCrearLicencias():
             BTCrear.configure(state=tk.DISABLED)
 
     etiquetaPadron=Label(Clicencias,bg="white")
-    etiquetaPadron.place(x=140, y=160)
+    etiquetaPadron.place(x=140, y=190)
     
     FCantidad.bind("<KeyRelease>", activarBotonCrear)
     
-    FCantidad.place(x=140, y=140)
+    FCantidad.place(x=140, y=160)
 
     def procesoLicencias(padron,pNumero):
         """
@@ -122,11 +128,11 @@ def opcionCrearLicencias():
 
     bLimpiar = Button(Clicencias, text="Limpiar", width=8, height=1, font=("Arial", 8), activebackground="lightpink",bg="lightgray",command=limpiarDatos2)
     bLimpiar.configure(cursor="hand2")
-    bLimpiar.place(x=170, y=210)
+    bLimpiar.place(x=170, y=240)
 
     bRegresar = Button(Clicencias, text="Regresar", width=8, height=1, font=("Arial", 8), activebackground="lightpink",bg="lightgray",command=Clicencias.destroy)
     bRegresar.configure(cursor="hand2")
-    bRegresar.place(x=240, y=210)
+    bRegresar.place(x=240, y=240)
 
 def opcionCrearXML():
     """
@@ -134,6 +140,8 @@ def opcionCrearXML():
     """
     funciones.conseguirTipoLicencias()
     messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
+
+be = PhotoImage()
 
 def Renovar():
     """
@@ -147,17 +155,21 @@ def Renovar():
     CRenovar.geometry("400x400")
     CRenovar.grab_set()
 
-    texto = Label(CRenovar, text="Renovar licencia", bg="white", font=("Arial", 15))
-    texto.place(x=130, y=30)
+    global be
+    be.configure(file = "Renovarlicencias.png")
+    be1 = Canvas(CRenovar, width=400, height=400, bg="white")
+    be1.pack()
+
+    be1.create_image(0, 0, image=be, anchor="nw")
 
     textoCedula = Label(CRenovar,pady=15, text="Cedula: ", bg="white", font=("Arial", 10),)
-    textoCedula.place(x=35, y=80)
+    textoCedula.place(x=40, y=120)
 
     FCedula = Entry(CRenovar)
 
     BTRenovar = Button(CRenovar, text="Renovar",width=8, height=1, font=("Arial", 8), activebackground="lightpink",bg="lightgray", command=lambda: procesoRenovarLicencias(licencias, FCedula.get()))
     BTRenovar.configure(cursor="hand2")
-    BTRenovar.place(x=100, y=210)
+    BTRenovar.place(x=100, y=230)
     BTRenovar.configure(state=tk.DISABLED)
 
     def limpiarDatos2():
@@ -198,11 +210,11 @@ def Renovar():
             etiquetaCedula.config(text="")
 
     etiquetaCedula=Label(CRenovar,bg="white")
-    etiquetaCedula.place(x=135, y=125)
+    etiquetaCedula.place(x=135, y=175)
     
     FCedula.bind("<KeyRelease>", activarBotonCrear)
     
-    FCedula.place(x=140, y=95)
+    FCedula.place(x=140, y=135)
 
     def procesoRenovarLicencias(licencias,pNumero):
         """
@@ -225,11 +237,13 @@ def Renovar():
 
     bLimpiar = Button(CRenovar, text="Limpiar", width=8, height=1, font=("Arial", 8), activebackground="lightpink",bg="lightgray",command=limpiarDatos2)
     bLimpiar.configure(cursor="hand2")
-    bLimpiar.place(x=170, y=210)
+    bLimpiar.place(x=170, y=230)
 
     bRegresar = Button(CRenovar, text="Regresar", width=8, height=1, font=("Arial", 8), activebackground="lightpink",bg="lightgray",command=CRenovar.destroy)
     bRegresar.configure(cursor="hand2")
-    bRegresar.place(x=240, y=210)
+    bRegresar.place(x=240, y=230)
+
+bi = PhotoImage()
 
 def generarPDF():
     """
@@ -243,18 +257,22 @@ def generarPDF():
     CPDF.geometry("400x400")
     CPDF.grab_set()
 
-    texto = Label(CPDF, text="Generar PDF", bg="white", font=("Arial", 15))
-    texto.place(x=130, y=30)
+    global bi
+    bi.configure(file = "generarPDF.png")
+    bi1 = Canvas(CPDF, width=400, height=400, bg="white")
+    bi1.pack()
+
+    bi1.create_image(0, 0, image=bi, anchor="nw")
 
     textoCedula = Label(CPDF,pady=15, text="Cedula: ", bg="white", font=("Arial", 10),)
-    textoCedula.place(x=20, y=80)
+    textoCedula.place(x=40, y=120)
 
 
     FCedula = Entry(CPDF)
 
     BTCrear = Button(CPDF, text="Generar",width=8, height=1, font=("Arial", 8), activebackground="lightpink",bg="lightgray", command=lambda: procesoPDF(licencias, FCedula.get()))
     BTCrear.configure(cursor="hand2")
-    BTCrear.place(x=100, y=210)
+    BTCrear.place(x=100, y=230)
     BTCrear.configure(state=tk.DISABLED)
 
     def validarCedula(pCedula):
@@ -294,11 +312,11 @@ def generarPDF():
             etiquetaCedula.config(text="")
 
     etiquetaCedula=Label(CPDF,bg="white")
-    etiquetaCedula.place(x=100, y=160)
+    etiquetaCedula.place(x=135, y=175)
     
     FCedula.bind("<KeyRelease>", activarBotonCrear)
     
-    FCedula.place(x=140, y=80)
+    FCedula.place(x=140, y=135)
 
     def procesoPDF(padron,pNumero):
         """
@@ -313,11 +331,13 @@ def generarPDF():
 
     bLimpiar = Button(CPDF, text="Limpiar", width=8, height=1, font=("Arial", 8), activebackground="lightpink",bg="lightgray",command=limpiarDatos2)
     bLimpiar.configure(cursor="hand2")
-    bLimpiar.place(x=170, y=210)
+    bLimpiar.place(x=170, y=230)
 
     bRegresar = Button(CPDF, text="Regresar", width=8, height=1, font=("Arial", 8), activebackground="lightpink",bg="lightgray",command=CPDF.destroy)
     bRegresar.configure(cursor="hand2")
-    bRegresar.place(x=240, y=210)
+    bRegresar.place(x=240, y=230)
+
+bs = PhotoImage()
 
 def opcionReporteTipoLicencias():
     """
@@ -328,8 +348,14 @@ def opcionReporteTipoLicencias():
     CReporteTipo.configure(bg="white")
     CReporteTipo.iconbitmap("Cosevi.ico")
     CReporteTipo.resizable(False, False)
-    CReporteTipo.geometry("400x400")
+    CReporteTipo.geometry("450x400")
     CReporteTipo.grab_set()
+
+    global bs
+    bs.configure(file = "reporteTipo.png")
+    bs1 = Canvas(CReporteTipo, width=450, height=400, bg="white")
+    bs1.pack()
+    bs1.create_image(0, 0, image=bs, anchor="nw")
 
     def activarGenerar(event):
         """
@@ -344,13 +370,16 @@ def opcionReporteTipoLicencias():
         funciones.reporteTipoLicencia(licencias, cajaOpciones.get())
         messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
 
-    cajaOpciones = ttk.Combobox(CReporteTipo, values=funciones.conseguirTipoLicencias())
-    cajaOpciones.place(x=60, y=120)
+    texto = Label(CReporteTipo, text="Seleccione la opcion con el tipo de licencia a consultar", bg="white", font=("Arial", 10))
+    texto.place(x=70, y=110)
+
+    cajaOpciones = ttk.Combobox(CReporteTipo,width=30, values=funciones.conseguirTipoLicencias())
+    cajaOpciones.place(x=130, y=170)
     cajaOpciones.bind("<<ComboboxSelected>>", activarGenerar)
 
     BTCrear = Button(CReporteTipo, text="Generar",width=8, height=1, font=("Arial", 8), activebackground="lightpink",bg="lightgray", command=procesoReporte)
     BTCrear.configure(cursor="hand2")
-    BTCrear.place(x=100, y=210)
+    BTCrear.place(x=205, y=230)
     BTCrear.configure(state=tk.DISABLED)
 
 def opcionExamenPorSancion():
@@ -377,6 +406,9 @@ def opcionReporteTotal():
         messagebox.showinfo(title="Verificacion",message="El documento ya existe")
     flagReporteTotal=False
 
+bo = PhotoImage()
+bu = PhotoImage()
+
 def menuReportes():
     """
     Funcionalidad: Muestra en menú de reportes
@@ -386,11 +418,14 @@ def menuReportes():
     CReportes.configure(bg="white")
     CReportes.iconbitmap("Cosevi.ico")
     CReportes.resizable(False, False)
-    CReportes.geometry("650x600")
+    CReportes.geometry("500x600")
     CReportes.grab_set()
 
-    texto = Label(CReportes, text="Renovar licencia", bg="white", font=("Arial", 15))
-    texto.place(x=130, y=30)
+    global bo
+    bo.configure(file = "Reportes.png")
+    bo1 = Canvas(CReportes, width=500, height=600, bg="white")
+    bo1.pack()
+    bo1.create_image(0, 0, image=bo, anchor="nw")
 
     def procesoDonantes():
         """
@@ -566,10 +601,16 @@ def menuReportes():
         repSede.configure(bg="white")
         repSede.resizable(True, True)
         repSede.grab_set()
-        repSede.geometry("450x200")
+        repSede.geometry("500x400")
+
+        global bu
+        bu.configure(file = "reporteSedes.png")
+        bu1 = Canvas(repSede, width=500, height=600, bg="white")
+        bu1.pack()
+        bu1.create_image(0, 0, image=bu, anchor="nw")
 
         texto = Label(repSede, text="Seleccione la opcion con la sede a consultar", bg="white", font=("Arial", 10))
-        texto.place(x=60, y=40)
+        texto.place(x=110, y=110)
         
         
         cajaOpciones= ttk.Combobox(repSede,width=60, values=["Dirección General de Educación Vial, licencias sede central", "Dirección General de Educación Vial licencias Alajuela",
@@ -580,9 +621,9 @@ def menuReportes():
                                                     "Dirección General de Educación Vial licencias Pérez Zeledón", "Dirección General de Educación Vial licencias Río Claro de Golfito",
                                                     "Dirección General de Educación Vial licencias San Carlos"])
         cajaOpciones.bind("<<ComboboxSelected>>", activarBotonSede)
-        cajaOpciones.place(x=30, y=100)
-        bConsultar = Button(repSede, text="Consultar", state=tk.DISABLED ,width=10, height=1, font=("Arial", 8), activebackground="lightgreen",bg="lightblue", command=lambda : procesoLicSedes(cajaOpciones.get()))
-        bConsultar.place(x=180, y=150)
+        cajaOpciones.place(x=55, y=180)
+        bConsultar = Button(repSede, text="Consultar", state=tk.DISABLED ,width=10, height=1, font=("Arial", 8), activebackground="#fbd404",bg="lightgray", command=lambda : procesoLicSedes(cajaOpciones.get()))
+        bConsultar.place(x=210, y=245)
 
     def salirProgramaReportes():
         """
@@ -590,36 +631,36 @@ def menuReportes():
         """
         CReportes.destroy()
 
-    bTotalLic = Button(CReportes, text="Totalidad de licencias", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray", command=opcionReporteTotal)
+    bTotalLic = Button(CReportes, text="Totalidad de licencias", width=18, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray", command=opcionReporteTotal)
     bTotalLic.configure(cursor="hand2")
-    bTotalLic.place(x=130, y=120)
+    bTotalLic.place(x=70, y=130)
 
-    bTipoLic = Button(CReportes, text="Por tipo de licencia", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=opcionReporteTipoLicencias)
+    bTipoLic = Button(CReportes, text="Por tipo de licencia", width=18, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=opcionReporteTipoLicencias)
 
     #bTipoLic = Button(CReportes, text="Por tipo de licencia", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=procesoTipoLic)
 
     bTipoLic.configure(cursor="hand2")
-    bTipoLic.place(x=340, y=120)
+    bTipoLic.place(x=270, y=130)
 
-    bExamenSan = Button(CReportes, text="Examen por sanción", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=opcionExamenPorSancion)
+    bExamenSan = Button(CReportes, text="Examen por sanción", width=18, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=opcionExamenPorSancion)
     bExamenSan.configure(cursor="hand2")
-    bExamenSan.place(x=130, y=220)
+    bExamenSan.place(x=70, y=220)
 
-    bDonantes = Button(CReportes, text="Donantes de órganos", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=procesoDonantes)
+    bDonantes = Button(CReportes, text="Donantes de órganos", width=18, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=procesoDonantes)
     bDonantes.configure(cursor="hand2")
-    bDonantes.place(x=340, y=220)
+    bDonantes.place(x=270, y=220)
 
-    bLicAnulada = Button(CReportes, text="Licencia anulada", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=procesoLicAnulada)
+    bLicAnulada = Button(CReportes, text="Licencia anulada", width=18, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=procesoLicAnulada)
     bLicAnulada.configure(cursor="hand2")
-    bLicAnulada.place(x=130, y=320)
+    bLicAnulada.place(x=70, y=320)
 
-    bLicSede = Button(CReportes, text="Licencias por sede", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=reporteLicSede)
+    bLicSede = Button(CReportes, text="Licencias por sede", width=18, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=reporteLicSede)
     bLicSede.configure(cursor="hand2")
-    bLicSede.place(x=340, y=320)
+    bLicSede.place(x=270, y=320)
 
-    bSalir = Button(CReportes, text="Salir", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=salirProgramaReportes)
+    bSalir = Button(CReportes, text="Salir", width=18, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=salirProgramaReportes)
     bSalir.configure(cursor="hand2")
-    bSalir.place(x=240, y=420)
+    bSalir.place(x=170, y=420)
     
 
 def salirPrograma():
@@ -632,6 +673,7 @@ def salirPrograma():
 
 FMariano = PhotoImage()
 FNicole = PhotoImage()
+bc = PhotoImage() 
 def acercaDe():
     """
     Funcionalidad: Muestra la información de los desarolladores
@@ -641,26 +683,39 @@ def acercaDe():
     CAcercaDe.configure(bg="white")
     CAcercaDe.iconbitmap("Cosevi.ico")
     CAcercaDe.resizable(False, False)
-    CAcercaDe.geometry("400x700")
+    CAcercaDe.geometry("500x500")
     CAcercaDe.grab_set()
+
+    global bc
+    bc.configure(file = "desarrolladores.png")
+    bc1 = Canvas(CAcercaDe, width=500, height=500, bg="white")
+    bc1.pack()
+
+    bc1.create_image(0, 0, image=bc, anchor="nw")
     
     global FNicole
     FNicole.configure(file="nicole.png")
     #FMariano = PhotoImage()
     lNicole = Label(CAcercaDe, image=FNicole, width=100, height=100)
-    lNicole.place(x=50, y=50)
+    lNicole.place(x=80, y=150)
 
-    LNicole = Label(CAcercaDe, text="Nicole Parra, 2023223291", bg="white", font=("Arial", 15))
-    LNicole.place(x=50, y=200)
+    LNicole = Label(CAcercaDe, text="Nicole Parra", bg="white", font=("Arial", 11))
+    LNicole.place(x=90, y=270)
+
+    LNicole1 = Label(CAcercaDe, text="2023223291", bg="white", font=("Arial", 11))
+    LNicole1.place(x=90, y=300)
 
     global FMariano
     FMariano.configure(file="marianoo.png")
     #FMariano = PhotoImage()
     lMariano = Label(CAcercaDe, image=FMariano, width=100, height=100)
-    lMariano.place(x=50, y=250)
+    lMariano.place(x=320, y=150)
 
-    LMariano = Label(CAcercaDe, text="Mariano Soto, 2020142918", bg="white", font=("Arial", 15))
-    LMariano.place(x=50, y=400)
+    LMariano = Label(CAcercaDe, text="Mariano Soto", bg="white", font=("Arial", 11))
+    LMariano.place(x=325, y=270)
+
+    LMariano1 = Label(CAcercaDe, text="2020142918", bg="white", font=("Arial", 11))
+    LMariano1.place(x=325, y=300)
 
 #Ventana principal
 
