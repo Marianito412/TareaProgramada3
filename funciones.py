@@ -3,6 +3,7 @@
 #Ultima version: 04/06/2023 1:30pm
 #Version: 3.10.6
 
+#Importación de bibliotecas
 import bs4
 import requests
 import archivos
@@ -16,6 +17,7 @@ import pdfkit
 
 x = datetime.datetime.now()
 
+#Definición de funciones
 def crearCedula(pPadron):
     """
     Funcionalidad: Crea una cédula única
@@ -274,7 +276,7 @@ def reporteTipoLicencia(pLicencias, tipoLicencia):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarLicencia()]
 
     reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "Tipo de licencia"], extraerDatosTipoLicencia, [lambda x: x.mostrarLicencia()==tipoLicencia])
-    archivos.guardarTexto(f"Reporte{tipoLicencia}", ".csv", reporte, encoding="utf-8")
+    archivos.guardarTexto(f"Reporte{tipoLicencia}", ".csv", reporte)
 
 def reporteSancion(pLicencias):
     """
@@ -287,7 +289,7 @@ def reporteSancion(pLicencias):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarLicencia(), pPersona.mostrarPuntaje()]
 
     reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "Tipo de licencia", "Puntaje"], extraerDatosSancion, [lambda x: x.mostrarPuntaje()<=6 and x.mostrarPuntaje()>0])
-    archivos.guardarTexto("ReporteSanción", ".csv", reporte, encoding="utf-8")
+    archivos.guardarTexto("ReporteSanción", ".csv", reporte)
 
 def reporteTotal(pLicencias):
     """
@@ -300,7 +302,7 @@ def reporteTotal(pLicencias):
         return pPersona.indicarDatos()
 
     reporte = generarReporte(pLicencias, ['Cédula', 'Nombre', 'FechaNac', 'FechaExp', 'FechaVenc', 'TipoLicen', 'TipoSangre', 'Donador', 'Sede', 'Puntaje'], extraerDatosTotal, [])
-    archivos.guardarTexto("ReporteTotal", ".csv", reporte, encoding="utf-8")
+    archivos.guardarTexto("ReporteTotal", ".csv", reporte)
 
 def reporteDonador(pLicencias):
     """

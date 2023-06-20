@@ -8,6 +8,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 import re
+import archivos
 import funciones
 from clases import Licencia
 
@@ -25,7 +26,8 @@ fondo.pack()
 bg = PhotoImage(file="fondo.png")
 fondo.create_image(0, 0, image=bg, anchor="nw")
 
-licencias=[]
+licencias = archivos.lee("Licencias")
+archivos.graba("Licencias", licencias)
 
 flagDonantes= True
 flagTipoLic= True
@@ -113,6 +115,7 @@ def opcionCrearLicencias():
         -pNumero: numero de personas a agregar
         """
         funciones.crearLicencias(licencias, int(pNumero))
+        archivos.graba("Licencias", licencias)
         messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
         limpiarDatos2()
 
@@ -206,6 +209,7 @@ def Renovar():
         -pNumero: numero de personas a agregar
         """
         funciones.renovarLicencias(licencias, FCedula.get())
+        archivos.graba("Licencias", licencias)
         messagebox.showinfo(title="Verificacion",message="Se ha renovado con exito")
         limpiarDatos2()
 
