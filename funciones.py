@@ -12,8 +12,6 @@ import datetime
 from clases import Licencia
 import datetime
 import pdfkit
-import os
-#import pandas as pd
 
 x = datetime.datetime.now()
 
@@ -93,9 +91,6 @@ def generarPDF(pLicencias, pCedula):
             generarHTML(persona)
             pdfkit.from_file("generado.html", "Licencia.pdf", css="style.css", configuration=config)
             return True
-    #generarHTML(pLicencias[0])
-    #pdfkit.from_file("generado.html", "test.pdf", configuration=config, options={"user-style-sheet": "style.css"})
-    #print()
     print(pCedula)
     return False
 
@@ -172,7 +167,6 @@ def renovarLicencias(licencias, pCedula):
                 annio= str(int(x.strftime("%Y")) + 3)
             persona.asignarVencimiento(x.strftime("%d-%m")+"-"+annio)
             print(persona.indicarDatos())
-    print(licencias)
     return licencias
 
 def reporteTipoLicencia(pLicencias, tipoLicencia):
@@ -180,7 +174,7 @@ def reporteTipoLicencia(pLicencias, tipoLicencia):
     def extraerDatosTipoLicencia(pPersona: Licencia):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarLicencia()]
 
-    reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "Tipo de licencia"], extraerDatosTipoLicencia, [lambda x: x.mostrarLicencia()==tipoLicencia])
+    reporte = generarReporte(pLicencias, ["Cedula", "Nombre", "Tipo de licencia"], extraerDatosTipoLicencia, [lambda x: x.mostrarLicencia()==tipoLicencia])
     archivos.guardarTexto(f"Reporte{tipoLicencia}", ".csv", reporte, encoding="utf-8")
 
 def reporteSancion(pLicencias):
@@ -188,7 +182,7 @@ def reporteSancion(pLicencias):
     def extraerDatosSancion(pPersona: Licencia):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarLicencia(), pPersona.mostrarPuntaje()]
 
-    reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "Tipo de licencia", "Puntaje"], extraerDatosSancion, [lambda x: x.mostrarPuntaje()<=6 and x.mostrarPuntaje()>0])
+    reporte = generarReporte(pLicencias, ["Cedula", "Nombre", "Tipo de licencia", "Puntaje"], extraerDatosSancion, [lambda x: x.mostrarPuntaje()<=6 and x.mostrarPuntaje()>0])
     archivos.guardarTexto("ReporteSanción", ".csv", reporte, encoding="utf-8")
 
 def reporteTotal(pLicencias):
