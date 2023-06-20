@@ -66,8 +66,6 @@ def opcionCrearLicencias():
 
     textoPadron = Label(Clicencias,pady=15, text="¿A cuántos personas desea crear licencias?", bg="white", font=("Arial", 10),)
     textoPadron.place(x=70, y=80)
-    #cajaOpciones = ttk.Combobox(Clicencias, values=funciones.conseguirTipoLicencias())
-    #cajaOpciones.place(x=140, y=140)
 
     FCantidad = Entry(Clicencias)
 
