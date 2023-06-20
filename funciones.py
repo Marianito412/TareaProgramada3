@@ -183,31 +183,31 @@ def determinarSede(pPersona: Licencia):
     """
     provincia = int(pPersona.mostrarCedula()[0])
     sedesPorProvincia = {
-        1:["Dirección General de Educación Vial, licencias sede central",
-           "Dirección General de Educación Vial, licencias Heredia"],
+        1:["Dirección General de Educación Vial licencias sede central",
+           "Dirección General de Educación Vial licencias Heredia"],
 
-        8:["Dirección General de Educación Vial, licencias sede central",
-            "Dirección General de Educación Vial, licencias Heredia"],
+        8:["Dirección General de Educación Vial licencias sede central",
+            "Dirección General de Educación Vial licencias Heredia"],
 
-        9:["Dirección General de Educación Vial, licencias sede central",
-           "Dirección General de Educación Vial, licencias Heredia"],
+        9:["Dirección General de Educación Vial licencias sede central",
+           "Dirección General de Educación Vial licencias Heredia"],
 
-        2:["Dirección General de Educación Vial, licencias San Carlos",
-            "Dirección General de Educación Vial, licencias Alajuela",
-            "Dirección General de Educación Vial, licencias San Ramón"],
+        2:["Dirección General de Educación Vial licencias San Carlos",
+            "Dirección General de Educación Vial licencias Alajuela",
+            "Dirección General de Educación Vial licencias San Ramón"],
 
-        3:["Dirección General de Educación Vial, licencias Cartago"],
+        3:["Dirección General de Educación Vial licencias Cartago"],
 
-        4:["Dirección General de Educación Vial, licencias Heredia"],
+        4:["Dirección General de Educación Vial licencias Heredia"],
 
-        5:["Dirección General de Educación Vial, licencias Liberia",
-           "Dirección General de Educación Vial, licencias Nicoya"],
+        5:["Dirección General de Educación Vial licencias Liberia",
+           "Dirección General de Educación Vial licencias Nicoya"],
 
-        6:["Dirección General de Educación Vial, licencias Puntarenas",
-           "Dirección General de Educación Vial, licencias Rio Claro"],
+        6:["Dirección General de Educación Vial licencias Puntarenas",
+           "Dirección General de Educación Vial licencias Rio Claro"],
 
-        7:["Dirección General de Educación Vial, licencias Guapiles",
-           "Dirección General de Educación Vial, licencias Limón"]
+        7:["Dirección General de Educación Vial licencias Guapiles",
+           "Dirección General de Educación Vial licencias Limón"]
     }
     return random.choice(sedesPorProvincia[provincia])
 
