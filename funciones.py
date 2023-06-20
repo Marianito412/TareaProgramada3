@@ -344,10 +344,11 @@ def reporteSedeCentral(pLicencias):
             return "No es donador"
         else:
             return "Es donador"
+        
     def extraerDatosSedeCentral(pPersona: Licencia):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
     def filtrarSedeCentral(pPersona: Licencia):
-        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias sede central":
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial licencias sede central":
             return True
         else:
             return False
@@ -366,7 +367,7 @@ def reporteSedeAlajuela(pLicencias):
     def extraerDatosSedeAlajuela(pPersona: Licencia):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
     def filtrarSedeAlajuela(pPersona: Licencia):
-        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias Alajuela":
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial licencias Alajuela":
             return True
         else:
             return False
@@ -385,7 +386,7 @@ def reporteSedeCartago(pLicencias):
     def extraerDatosSedeCartago(pPersona: Licencia):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
     def filtrarSedeCartago(pPersona: Licencia):
-        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias Cartago":
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial licencias Cartago":
             return True
         else:
             return False
@@ -404,7 +405,7 @@ def reporteSedeHeredia(pLicencias):
     def extraerDatosSedeHeredia(pPersona: Licencia):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
     def filtrarSedeHeredia(pPersona: Licencia):
-        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias Heredia":
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial licencias Heredia":
             return True
         else:
             return False
@@ -423,7 +424,7 @@ def reporteSedeSanRamon(pLicencias):
     def extraerDatosSedeSanRamon(pPersona: Licencia):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
     def filtrarSedeSanRamon(pPersona: Licencia):
-        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias San Ramón":
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial licencias San Ramón":
             return True
         else:
             return False
@@ -442,7 +443,7 @@ def reporteSedeGuapiles(pLicencias):
     def extraerDatosSedeGuapiles(pPersona: Licencia):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
     def filtrarSedeGuapiles(pPersona: Licencia):
-        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias Guápiles":
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial licencias Guápiles":
             return True
         else:
             return False
@@ -461,7 +462,7 @@ def reporteSedeLimon(pLicencias):
     def extraerDatosSedeLimon(pPersona: Licencia):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
     def filtrarSedeLimon(pPersona: Licencia):
-        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias Limón":
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial licencias Limón":
             return True
         else:
             return False
@@ -480,7 +481,7 @@ def reporteSedeLiberia(pLicencias):
     def extraerDatosSedeLiberia(pPersona: Licencia):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
     def filtrarSedeLiberia(pPersona: Licencia):
-        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias Liberia":
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial licencias Liberia":
             return True
         else:
             return False
@@ -499,7 +500,7 @@ def reporteSedeNicoya(pLicencias):
     def extraerDatosSedeNicoya(pPersona: Licencia):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
     def filtrarSedeNicoya(pPersona: Licencia):
-        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias Nicoya":
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial licencias Nicoya":
             return True
         else:
             return False
@@ -518,7 +519,7 @@ def reporteSedePuntarenas(pLicencias):
     def extraerDatosSedePuntarenas(pPersona: Licencia):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
     def filtrarSedePuntarenas(pPersona: Licencia):
-        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias Puntarenas":
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial licencias Puntarenas":
             return True
         else:
             return False
@@ -537,7 +538,7 @@ def reporteSedePerezZeledon(pLicencias):
     def extraerDatosSedePerezZeledon(pPersona: Licencia):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
     def filtrarSedePerezZeledon(pPersona: Licencia):
-        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias Pérez Zeledón":
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial licencias Pérez Zeledón":
             return True
         else:
             return False
@@ -556,7 +557,7 @@ def reporteSedeGolfito(pLicencias):
     def extraerDatosSedeGolfito(pPersona: Licencia):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
     def filtrarSedeGolfito(pPersona: Licencia):
-        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias Río Claro de Golfito":
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial licencias Río Claro de Golfito":
             return True
         else:
             return False
@@ -575,7 +576,7 @@ def reporteSedeSanCarlos(pLicencias):
     def extraerDatosSedeSanCarlos(pPersona: Licencia):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
     def filtrarSedeSanCarlos(pPersona: Licencia):
-        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias San Carlos":
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial licencias San Carlos":
             return True
         else:
             return False

@@ -412,7 +412,7 @@ def menuReportes():
         def procesoLicSedes(pOpcion):
             print(pOpcion)
 
-            if pOpcion=="Dirección General de Educación Vial, licencias sede central":
+            if pOpcion=="Dirección General de Educación Vial licencias sede central":
                 global flagReporteSedeCentral
                 if flagReporteSedeCentral==True:
                     funciones.reporteSedeCentral(licencias)
@@ -420,7 +420,7 @@ def menuReportes():
                 else:
                     messagebox.showinfo(title="Verificacion",message="El documento ya existe")
                 flagReporteSedeCentral=False
-            elif pOpcion=="Dirección General de Educación Vial, licencias Alajuela":
+            elif pOpcion=="Dirección General de Educación Vial licencias Alajuela":
                 global flagReporteSedeAlajuela
                 if flagReporteSedeCentral==True:
                     funciones.reporteSedeAlajuela(licencias)
@@ -428,7 +428,7 @@ def menuReportes():
                 else:
                     messagebox.showinfo(title="Verificacion",message="El documento ya existe")
                 flagReporteSedeAlajuela=False
-            elif pOpcion=="Dirección General de Educación Vial, licencias Cartago":
+            elif pOpcion=="Dirección General de Educación Vial licencias Cartago":
                 global flagReporteSedeCartago
                 if flagReporteSedeCartago==True:
                     funciones.reporteSedeCartago(licencias)
@@ -436,7 +436,7 @@ def menuReportes():
                 else:
                     messagebox.showinfo(title="Verificacion",message="El documento ya existe")
                 flagReporteSedeCartago=False
-            elif pOpcion=="Dirección General de Educación Vial, licencias Heredia":
+            elif pOpcion=="Dirección General de Educación Vial licencias Heredia":
                 global flagReporteSedeHeredia
                 if flagReporteSedeHeredia==True:
                     funciones.reporteSedeHeredia(licencias)
@@ -444,7 +444,7 @@ def menuReportes():
                 else:
                     messagebox.showinfo(title="Verificacion",message="El documento ya existe")
                 flagReporteSedeHeredia=False
-            elif pOpcion=="Dirección General de Educación Vial, licencias San Ramón":
+            elif pOpcion=="Dirección General de Educación Vial licencias San Ramón":
                 global flagReporteSedeSanRamon
                 if flagReporteSedeSanRamon==True:
                     funciones.reporteSedeSanRamon(licencias)
@@ -452,7 +452,7 @@ def menuReportes():
                 else:
                     messagebox.showinfo(title="Verificacion",message="El documento ya existe")
                 flagReporteSedeSanRamon=False
-            elif pOpcion=="Dirección General de Educación Vial, licencias Guápiles":
+            elif pOpcion=="Dirección General de Educación Vial licencias Guápiles":
                 global flagReporteSedeGuapiles
                 if flagReporteSedeGuapiles==True:
                     funciones.reporteSedeGuapiles(licencias)
@@ -460,7 +460,7 @@ def menuReportes():
                 else:
                     messagebox.showinfo(title="Verificacion",message="El documento ya existe")
                 flagReporteSedeGuapiles=False
-            elif pOpcion=="Dirección General de Educación Vial, licencias Limón":
+            elif pOpcion=="Dirección General de Educación Vial licencias Limón":
                 global flagReporteSedeLimon
                 if flagReporteSedeLimon==True:
                     funciones.reporteSedeLimon(licencias)
@@ -468,7 +468,7 @@ def menuReportes():
                 else:
                     messagebox.showinfo(title="Verificacion",message="El documento ya existe")
                 flagReporteSedeLimon=False
-            elif pOpcion=="Dirección General de Educación Vial, licencias Liberia":
+            elif pOpcion=="Dirección General de Educación Vial licencias Liberia":
                 global flagReporteSedeLiberia
                 if flagReporteSedeLiberia==True:
                     funciones.reporteSedeLiberia(licencias)
@@ -476,7 +476,7 @@ def menuReportes():
                 else:
                     messagebox.showinfo(title="Verificacion",message="El documento ya existe")
                 flagReporteSedeLiberia=False
-            elif pOpcion=="Dirección General de Educación Vial, licencias Nicoya":
+            elif pOpcion=="Dirección General de Educación Vial licencias Nicoya":
                 global flagReporteSedeNicoya
                 if flagReporteSedeNicoya==True:
                     funciones.reporteSedeNicoya(licencias)
@@ -484,7 +484,7 @@ def menuReportes():
                 else:
                     messagebox.showinfo(title="Verificacion",message="El documento ya existe")
                 flagReporteSedeNicoya=False
-            elif pOpcion=="Dirección General de Educación Vial, licencias Puntarenas":
+            elif pOpcion=="Dirección General de Educación Vial licencias Puntarenas":
                 global flagReporteSedePuntarenas
                 if flagReporteSedePuntarenas==True:
                     funciones.reporteSedePuntarenas(licencias)
@@ -492,7 +492,7 @@ def menuReportes():
                 else:
                     messagebox.showinfo(title="Verificacion",message="El documento ya existe")
                 flagReporteSedePuntarenas=False
-            elif pOpcion=="Dirección General de Educación Vial, licencias Pérez Zeledón":
+            elif pOpcion=="Dirección General de Educación Vial licencias Pérez Zeledón":
                 global flagReporteSedePerezZeledon
                 if flagReporteSedePerezZeledon==True:
                     funciones.reporteSedePerezZeledon(licencias)
@@ -500,7 +500,7 @@ def menuReportes():
                 else:
                     messagebox.showinfo(title="Verificacion",message="El documento ya existe")
                 flagReporteSedePerezZeledon=False
-            elif pOpcion=="Dirección General de Educación Vial, licencias Río Claro de Golfito":
+            elif pOpcion=="Dirección General de Educación Vial licencias Río Claro de Golfito":
                 global flagReporteSedeGolfito
                 if flagReporteSedeGolfito==True:
                     funciones.reporteSedeGolfito(licencias)
@@ -508,7 +508,7 @@ def menuReportes():
                 else:
                     messagebox.showinfo(title="Verificacion",message="El documento ya existe")
                 flagReporteSedeGolfito=False
-            elif pOpcion=="Dirección General de Educación Vial, licencias San Carlos":
+            elif pOpcion=="Dirección General de Educación Vial licencias San Carlos":
                 global flagReporteSedeSanCarlos
                 if flagReporteSedeSanCarlos==True:
                     funciones.reporteSedeSanCarlos(licencias)
@@ -516,17 +516,7 @@ def menuReportes():
                 else:
                     messagebox.showinfo(title="Verificacion",message="El documento ya existe")
                 flagReporteSedeSanCarlos=False
-            
-##            opciones = {
-##                "Dirección General de Educación Vial, licencias sede central": ["ESReportePersonalidades"],
-##                2: ["ESPorCategorias"],
-##                3: ["ESReportePersona"],
-##                4: ["ESReporteTotal"],
-##                5: ["SalirReporte"]
-##            }
-##            
-##            funciones.opciones[pOpcion](licencias)
-##        
+                   
         def activarBotonSede(event):
             """
             Funcionalidad: Activa el botón para buscar solo si la sede a buscar no es vacía
@@ -547,13 +537,13 @@ def menuReportes():
         texto.place(x=60, y=40)
         
         
-        cajaOpciones= ttk.Combobox(repSede,width=60, values=["Dirección General de Educación Vial, licencias sede central", "Dirección General de Educación Vial, licencias Alajuela",
-                                                    "Dirección General de Educación Vial, licencias Cartago", "Dirección General de Educación Vial, licencias Heredia",
-                                                    "Dirección General de Educación Vial, licencias San Ramón", "Dirección General de Educación Vial, licencias Guápiles",
-                                                    "Dirección General de Educación Vial, licencias Limón", "Dirección General de Educación Vial, licencias Liberia",
-                                                    "Dirección General de Educación Vial, licencias Nicoya", "Dirección General de Educación Vial, licencias Puntarenas",
-                                                    "Dirección General de Educación Vial, licencias Pérez Zeledón", "Dirección General de Educación Vial, licencias Río Claro de Golfito",
-                                                    "Dirección General de Educación Vial, licencias San Carlos"])
+        cajaOpciones= ttk.Combobox(repSede,width=60, values=["Dirección General de Educación Vial, licencias sede central", "Dirección General de Educación Vial licencias Alajuela",
+                                                    "Dirección General de Educación Vial licencias Cartago", "Dirección General de Educación Vial licencias Heredia",
+                                                    "Dirección General de Educación Vial licencias San Ramón", "Dirección General de Educación Vial licencias Guápiles",
+                                                    "Dirección General de Educación Vial licencias Limón", "Dirección General de Educación Vial licencias Liberia",
+                                                    "Dirección General de Educación Vial licencias Nicoya", "Dirección General de Educación Vial licencias Puntarenas",
+                                                    "Dirección General de Educación Vial licencias Pérez Zeledón", "Dirección General de Educación Vial licencias Río Claro de Golfito",
+                                                    "Dirección General de Educación Vial licencias San Carlos"])
         cajaOpciones.bind("<<ComboboxSelected>>", activarBotonSede)
         cajaOpciones.place(x=30, y=100)
         bConsultar = Button(repSede, text="Consultar", state=tk.DISABLED ,width=10, height=1, font=("Arial", 8), activebackground="lightgreen",bg="lightblue", command=lambda : procesoLicSedes(cajaOpciones.get()))
