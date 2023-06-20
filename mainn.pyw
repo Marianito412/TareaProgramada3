@@ -48,7 +48,6 @@ flagReporteSedePuntarenas= True
 flagReporteSedePerezZeledon= True
 flagReporteSedeGolfito= True
 
-
 def opcionCrearLicencias():
     """
     Funcionalidad: Menú para crear una cantidad de personas e incluirlas en el padrón
@@ -318,6 +317,9 @@ def generarPDF():
     bRegresar.place(x=240, y=210)
 
 def opcionReporteTipoLicencias():
+    """
+    Funcionalidad: Generar el reporte por tipo de licencia
+    """
     CReporteTipo = tk.Toplevel()
     CReporteTipo.title("Reporte por tipo de licencia")
     CReporteTipo.configure(bg="white")
@@ -327,9 +329,15 @@ def opcionReporteTipoLicencias():
     CReporteTipo.grab_set()
 
     def activarGenerar(event):
+        """
+        Funcionalidad: Activa el boton de generar reporte
+        """
         BTCrear.configure(state=tk.NORMAL)
 
     def procesoReporte():
+        """
+        Funcionalidad: Genera el reporte de tipo licencia
+        """
         funciones.reporteTipoLicencia(licencias, cajaOpciones.get())
         messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
 
@@ -343,6 +351,9 @@ def opcionReporteTipoLicencias():
     BTCrear.configure(state=tk.DISABLED)
 
 def opcionExamenPorSancion():
+    """
+    Funcionalidad: Genera el reporte de personas con sanción
+    """
     global flagReporteSancion
     if flagReporteSancion==True:
         funciones.reporteSancion(licencias)
@@ -352,6 +363,9 @@ def opcionExamenPorSancion():
     flagReporteSancion=False
 
 def opcionReporteTotal():
+    """
+    Funcionalidad: genera el reporte con la totalidad de la BD
+    """
     global flagReporteTotal
     if flagReporteTotal==True:
         funciones.reporteTotal(licencias)
@@ -361,6 +375,9 @@ def opcionReporteTotal():
     flagReporteTotal=False
 
 def menuReportes():
+    """
+    Funcionalidad: Muestra en menú de reportes
+    """
     CReportes = tk.Toplevel()
     CReportes.title("Reportes")
     CReportes.configure(bg="white")
@@ -373,6 +390,9 @@ def menuReportes():
     texto.place(x=130, y=30)
 
     def procesoDonantes():
+        """
+        Funcionalidad: Genera el reporte de donadores
+        """
         global flagDonantes
         if flagDonantes==True:
             funciones.reporteDonador(licencias)
@@ -391,6 +411,9 @@ def menuReportes():
         flagTipoLic=False
 
     def procesoLicAnulada():
+        """
+        Funcionalidad: Genera el reporte de anulados
+        """
         global flagLicAnulada
         if flagLicAnulada==True:
             funciones.reporteAnulado(licencias)
@@ -404,6 +427,9 @@ def menuReportes():
         Funcionalidad: Muestar un menú para poder solicitar un reporte de una sede específica
         """
         def procesoReporteSedeCentral():
+            """
+            Funcionalidad: Genera el reporte de los anulados
+            """
             global flagReporteSedeCentral
             if flagReporteSedeCentral==True:
                 funciones.reporteAnulado(licencias)
@@ -413,6 +439,9 @@ def menuReportes():
             flagReporteSedeCentral=False
         
         def procesoLicSedes(pOpcion):
+            """
+            Funcionalidad: Genera el reporte de la sede seleccionada
+            """
             print(pOpcion)
 
             if pOpcion=="Dirección General de Educación Vial licencias sede central":
@@ -553,6 +582,9 @@ def menuReportes():
         bConsultar.place(x=180, y=150)
 
     def salirProgramaReportes():
+        """
+        Funcionalidad: Cierra el menú de reportes
+        """
         CReportes.destroy()
 
     bTotalLic = Button(CReportes, text="Totalidad de licencias", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray", command=opcionReporteTotal)
@@ -588,11 +620,17 @@ def menuReportes():
     
 
 def salirPrograma():
+    """
+    Funcionalidad: Cierra el programa
+    """
     messagebox.showinfo(title="COSEVI",message="No olvides gestionar pronto tu licencia")
     raiz.destroy()
     
 
 def acercaDe():
+    """
+    Funcionalidad: Muestra la información de los desarolladores
+    """
     CAcercaDe = tk.Toplevel()
     CAcercaDe.title("Acerca De")
     CAcercaDe.configure(bg="white")
