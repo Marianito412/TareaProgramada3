@@ -630,6 +630,8 @@ def salirPrograma():
     raiz.destroy()
     
 
+FMariano = PhotoImage()
+
 def acercaDe():
     """
     Funcionalidad: Muestra la información de los desarolladores
@@ -641,14 +643,12 @@ def acercaDe():
     CAcercaDe.resizable(False, False)
     CAcercaDe.geometry("400x400")
     CAcercaDe.grab_set()
-
     
-    
-    FMariano = PhotoImage(file="marianoo.png")
+    global FMariano
+    FMariano.configure(file="marianoo.png")
+    #FMariano = PhotoImage()
     lMariano = Label(CAcercaDe, image=FMariano, width=100, height=100)
     lMariano.place(x=50, y=50)
-
-    
 
     LNicole = Label(CAcercaDe, text="Nicole Parra, 2023223291", bg="white", font=("Arial", 15))
     LNicole.place(x=100, y=100)
