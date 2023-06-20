@@ -1,8 +1,9 @@
 #Elaborado por: Nicole Tatiana Parra Valverde y Mariano Soto
 #Fecha de creacion: 04/06/2023 12:25am
-#Ultima version: 04/06/2023 1:30pm
+#Ultima version: 19/06/2023 1:30pm
 #Version: 3.10.6
 
+#Importación de bibliotecas
 from tkinter import *
 import tkinter as tk
 from tkinter import ttk
@@ -48,6 +49,7 @@ flagReporteSedePuntarenas= True
 flagReporteSedePerezZeledon= True
 flagReporteSedeGolfito= True
 
+#Definición de funciones
 def opcionCrearLicencias():
     """
     Funcionalidad: Menú para crear una cantidad de personas e incluirlas en el padrón
