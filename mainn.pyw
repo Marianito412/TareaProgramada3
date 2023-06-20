@@ -631,7 +631,7 @@ def salirPrograma():
     
 
 FMariano = PhotoImage()
-
+FNicole = PhotoImage()
 def acercaDe():
     """
     Funcionalidad: Muestra la información de los desarolladores
@@ -641,20 +641,26 @@ def acercaDe():
     CAcercaDe.configure(bg="white")
     CAcercaDe.iconbitmap("Cosevi.ico")
     CAcercaDe.resizable(False, False)
-    CAcercaDe.geometry("400x400")
+    CAcercaDe.geometry("400x700")
     CAcercaDe.grab_set()
     
+    global FNicole
+    FNicole.configure(file="nicole.png")
+    #FMariano = PhotoImage()
+    lNicole = Label(CAcercaDe, image=FNicole, width=100, height=100)
+    lNicole.place(x=50, y=50)
+
+    LNicole = Label(CAcercaDe, text="Nicole Parra, 2023223291", bg="white", font=("Arial", 15))
+    LNicole.place(x=50, y=200)
+
     global FMariano
     FMariano.configure(file="marianoo.png")
     #FMariano = PhotoImage()
     lMariano = Label(CAcercaDe, image=FMariano, width=100, height=100)
-    lMariano.place(x=50, y=50)
+    lMariano.place(x=50, y=250)
 
-    LNicole = Label(CAcercaDe, text="Nicole Parra, 2023223291", bg="white", font=("Arial", 15))
-    LNicole.place(x=100, y=100)
-
-    LNicole = Label(CAcercaDe, text="Mariano Soto, 2020142918", bg="white", font=("Arial", 15))
-    LNicole.place(x=100, y=200)
+    LMariano = Label(CAcercaDe, text="Mariano Soto, 2020142918", bg="white", font=("Arial", 15))
+    LMariano.place(x=50, y=400)
 
 #Ventana principal
 
