@@ -39,7 +39,20 @@ def lee(nomArchLeer):
         print("Archivo no encontrado: ", nomArchLeer)
     return lista
 
-def guardarTexto(pNombre, pExtension, pContenido):
+def cargarTexto(pNombre, pExtension):
+    """
+    Funcionalidad: Lee un archivo de texto
+    Entradas:
+    -pNombre(str): El nombre del archivo
+    -pExtension(str): La extensión del archivo
+    Salidas:
+    -contenido(str): El contenido del archivo
+    """
+    with open(f"{pNombre}{pExtension}", "r", encoding="utf-8") as archivo:
+        contenido=archivo.read()
+    return contenido
+
+def guardarTexto(pNombre, pExtension, pContenido, encoding=None):
     """
     Funcionalidad: Guarda un archivo de texto
     Entradas:
@@ -48,5 +61,5 @@ def guardarTexto(pNombre, pExtension, pContenido):
     -pContenido(str): El texto a guardar en el archivo
     Salidas:NA
     """
-    with open(f"{pNombre}{pExtension}", "w") as archivo:
+    with open(f"{pNombre}{pExtension}", "w", encoding=encoding) as archivo:
         archivo.write(pContenido)

@@ -11,6 +11,8 @@ import random
 import datetime
 from clases import Licencia
 import datetime
+import pdfkit
+import os
 #import pandas as pd
 
 x = datetime.datetime.now()
@@ -60,9 +62,42 @@ def conseguirTipoLicencias():
                 tagSubtipo = crearTag("subtipo", tagSubtipo)
                 subtipos += tagSubtipo
         tagTipo += crearTag("tipo", subtipos, pAtributo=f"nombre='{tipo.text.strip()}'")
-    archivos.guardarTexto("test", ".xml", tagTipo)
+    archivos.guardarTexto("TiposDeLicencias", ".xml", tagTipo)
     return tipoLicencias
-   
+
+def generarHTML(persona: Licencia):
+    plantilla = archivos.cargarTexto("plantilla", ".html")
+    plantilla = plantilla.format(
+        cedula=f"CI-{persona.mostrarCedula()[0]}{persona.mostrarCedula()[2:6]}{persona.mostrarCedula()[7:]}",
+        expedicion=persona.mostrarExpedicion(),
+        nacimiento=persona.mostrarNacimiento(),
+        vencimiento=persona.mostrarVencimiento(),
+        tipo=persona.mostrarLicencia(),
+        EsDonador="Donador" if persona.mostrarDonador() else "No Donador",
+        sangre=persona.mostrarSangre(),
+        nombre = persona.mostrarNombre(),
+        creacion = datetime.datetime.now().strftime("%d-%m-%Y %H:%M" ),
+        sede = persona.mostrarSede()
+    )
+    archivos.guardarTexto("generado", ".html", plantilla, encoding="utf-8")
+
+def generarPDF(pLicencias, pCedula):
+    path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
+    config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+    for persona in pLicencias:
+        persona : Licencia = persona
+        print(persona.mostrarCedula(), pCedula)
+        print(persona.mostrarCedula() == pCedula)
+        if persona.mostrarCedula() == pCedula:
+            print(persona.mostrarCorreo())
+            generarHTML(persona)
+            pdfkit.from_file("generado.html", "Licencia.pdf", css="style.css", configuration=config)
+            return True
+    #generarHTML(pLicencias[0])
+    #pdfkit.from_file("generado.html", "test.pdf", configuration=config, options={"user-style-sheet": "style.css"})
+    #print()
+    print(pCedula)
+    return False
 
 def filtrarLista(pLista, pFiltros=[]):
     for licencia in pLista:
@@ -86,6 +121,24 @@ def generarCorreo(persona: Licencia):
     nombres = persona.mostrarNombre().split(" ")
     return f"{nombres[1]}{nombres[2][0]}{nombres[0][0]}@gmail.com"
 
+def determinarSede(pPersona: Licencia):
+    provincia = int(pPersona.mostrarCedula()[0])
+    sedesPorProvincia = {
+        1:["Dirección General de Educación Vial", ""],
+        8:["Dirección General de Educación Vial", ""],
+        9:["Dirección General de Educación Vial", ""],
+        2:["Dirección General de Educación Vial", ""],
+        3:["Dirección General de Educación Vial licencias Cartago"],
+        4:["Dirección General de Educación Vial licencias Heredia"],
+        5:["Dirección General de Educación Vial licencias Liberia",
+           "Dirección General de Educación Vial licencias Nicoya"],
+        6:["Dirección General de Educación Vial licencias Puntarenas",
+           "Dirección General de Educación Vial licencias Rio Claro"],
+        7:["Dirección General de Educación Vial licencias Guapiles",
+           "Dirección General de Educación Vial licencias Lim+ón"]
+    }
+    return random.choice(sedesPorProvincia[provincia])
+
 def crearLicencias(pLista, pCantidad):
     tipoLicencias = conseguirTipoLicencias()
     for i in range(pCantidad):
@@ -94,12 +147,11 @@ def crearLicencias(pLista, pCantidad):
         nuevaLicencia.asignarNombre(f"{names.get_first_name()} {names.get_last_name()} {names.get_last_name()}")
         nuevaLicencia.asignarNacimiento(f"{random.randint(1,28)}-{random.randint(1,12)}-{random.randint(1900,2023-19)}")
         nuevaLicencia.asignarExpedicion(datetime.date.today().strftime("%d-%m-%Y"))
-        nuevaLicencia.asignarVencimiento(datetime.date.today()+ datetime.timedelta(days= 365*3 if conseguirEdad(nuevaLicencia)<25 else 365*5))
+        nuevaLicencia.asignarVencimiento((datetime.date.today() + datetime.timedelta(days= 365*3 if conseguirEdad(nuevaLicencia)<25 else 365*5)).strftime("%d-%m-%Y"))
         nuevaLicencia.asignarLicencia(random.choice(tipoLicencias))
         nuevaLicencia.asignarSangre(random.choice(["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB"]))
         nuevaLicencia.asignarDonador(bool(random.randint(0,1)))
-
-        #nuevaLicencia.asignarSede()
+        nuevaLicencia.asignarSede(determinarSede(nuevaLicencia))
         nuevaLicencia.asignarPuntaje(random.randint(0,12))
         nuevaLicencia.asignarCorreo(generarCorreo(nuevaLicencia))
         pLista.append(nuevaLicencia)
@@ -123,13 +175,29 @@ def renovarLicencias(licencias, pCedula):
     print(licencias)
     return licencias
 
-def reporteTipoLicencia(pLicencias):
+def reporteTipoLicencia(pLicencias, tipoLicencia):
     
     def extraerDatosTipoLicencia(pPersona: Licencia):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarLicencia()]
 
-    reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "Tipo de licencia"], extraerDatosTipoLicencia, [])
-    archivos.guardarTexto("ReporteTipoLicencia", ".csv", reporte)
+    reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "Tipo de licencia"], extraerDatosTipoLicencia, [lambda x: x.mostrarLicencia()==tipoLicencia])
+    archivos.guardarTexto(f"Reporte{tipoLicencia}", ".csv", reporte, encoding="utf-8")
+
+def reporteSancion(pLicencias):
+
+    def extraerDatosSancion(pPersona: Licencia):
+        return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarLicencia(), pPersona.mostrarPuntaje()]
+
+    reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "Tipo de licencia", "Puntaje"], extraerDatosSancion, [lambda x: x.mostrarPuntaje()<=6 and x.mostrarPuntaje()>0])
+    archivos.guardarTexto("ReporteSanción", ".csv", reporte, encoding="utf-8")
+
+def reporteTotal(pLicencias):
+
+    def extraerDatosTotal(pPersona: Licencia):
+        return pPersona.indicarDatos()
+
+    reporte = generarReporte(pLicencias, ['Cédula', 'Nombre', 'FechaNac', 'FechaExp', 'FechaVenc', 'TipoLicen', 'TipoSangre', 'Donador', 'Sede', 'Puntaje'], extraerDatosTotal, [])
+    archivos.guardarTexto("ReporteTotal", ".csv", reporte, encoding="utf-8")
 
 def reporteDonador(pLicencias):
 
@@ -168,7 +236,8 @@ def reporteDonador2(licencias):
     return licencias
 
 if __name__ == "__main__":
+    #os.system(f"wkhtmltopdf generado.html 'C:/Users/Usuario/Desktop/a.pdf'")
     lista = crearLicencias([], 10)
-    reporteDonador(lista)
+    generarPDF(lista, "a")
     #print(generarReporte(lista, ["Nombre", "Sangre"], lambda x: [x.mostrarNombre(), x.mostrarSangre()], []))
     
