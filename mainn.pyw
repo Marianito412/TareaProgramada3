@@ -30,6 +30,21 @@ fondo.create_image(0, 0, image=bg, anchor="nw")
 
 licencias=[]
 
+flagDonantes= True
+flagTipoLic= True
+flagLicAnulada= True
+flagReporteSedeCentral= True
+flagReporteSedeAlajuela= True
+flagReporteSedeCartago= True
+flagReporteSedeHeredia= True
+flagReporteSedeSanRamon= True
+flagReporteSedeGuapiles= True
+flagReporteSedeLimon= True
+flagReporteSedeLiberia= True
+flagReporteSedeNicoya= True
+flagReporteSedePuntarenas= True
+flagReporteSedePerezZeledon= True
+flagReporteSedeGolfito= True
 
 
 def opcionCrearLicencias():
@@ -323,13 +338,206 @@ def menuReportes():
     texto.place(x=130, y=30)
 
     def procesoDonantes():
-        funciones.reporteDonador(licencias)
+        global flagDonantes
+        if flagDonantes==True:
+            funciones.reporteDonador(licencias)
+            messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
+        else:
+            messagebox.showinfo(title="Verificacion",message="El documento ya existe")
+        flagDonantes=False
+        
+    def procesoTipoLic():
+        global flagTipoLic
+        if flagTipoLic==True:
+            funciones.reporteTipoLicencia(licencias)
+            messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
+        else:
+            messagebox.showinfo(title="Verificacion",message="El documento ya existe")
+        flagTipoLic=False
+
+    def procesoLicAnulada():
+        global flagLicAnulada
+        if flagLicAnulada==True:
+            funciones.reporteAnulado(licencias)
+            messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
+        else:
+            messagebox.showinfo(title="Verificacion",message="El documento ya existe")
+        flagLicAnulada=False
+
+    def reporteLicSede():
+        """
+        Funcionalidad: Muestar un menú para poder solicitar un reporte de una sede específica
+        """
+        def procesoReporteSedeCentral():
+            global flagReporteSedeCentral
+            if flagReporteSedeCentral==True:
+                funciones.reporteAnulado(licencias)
+                messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
+            else:
+                messagebox.showinfo(title="Verificacion",message="El documento ya existe")
+            flagReporteSedeCentral=False
+        
+        def procesoLicSedes(pOpcion):
+            print(pOpcion)
+
+            if pOpcion=="Dirección General de Educación Vial, licencias sede central":
+                global flagReporteSedeCentral
+                if flagReporteSedeCentral==True:
+                    funciones.reporteSedeCentral(licencias)
+                    messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
+                else:
+                    messagebox.showinfo(title="Verificacion",message="El documento ya existe")
+                flagReporteSedeCentral=False
+            elif pOpcion=="Dirección General de Educación Vial, licencias Alajuela":
+                global flagReporteSedeAlajuela
+                if flagReporteSedeCentral==True:
+                    funciones.reporteSedeAlajuela(licencias)
+                    messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
+                else:
+                    messagebox.showinfo(title="Verificacion",message="El documento ya existe")
+                flagReporteSedeAlajuela=False
+            elif pOpcion=="Dirección General de Educación Vial, licencias Cartago":
+                global flagReporteSedeCartago
+                if flagReporteSedeCartago==True:
+                    funciones.reporteSedeCartago(licencias)
+                    messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
+                else:
+                    messagebox.showinfo(title="Verificacion",message="El documento ya existe")
+                flagReporteSedeCartago=False
+            elif pOpcion=="Dirección General de Educación Vial, licencias Heredia":
+                global flagReporteSedeHeredia
+                if flagReporteSedeHeredia==True:
+                    funciones.reporteSedeHeredia(licencias)
+                    messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
+                else:
+                    messagebox.showinfo(title="Verificacion",message="El documento ya existe")
+                flagReporteSedeHeredia=False
+            elif pOpcion=="Dirección General de Educación Vial, licencias San Ramón":
+                global flagReporteSedeSanRamon
+                if flagReporteSedeSanRamon==True:
+                    funciones.reporteSedeSanRamon(licencias)
+                    messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
+                else:
+                    messagebox.showinfo(title="Verificacion",message="El documento ya existe")
+                flagReporteSedeSanRamon=False
+            elif pOpcion=="Dirección General de Educación Vial, licencias Guápiles":
+                global flagReporteSedeGuapiles
+                if flagReporteSedeGuapiles==True:
+                    funciones.reporteSedeGuapiles(licencias)
+                    messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
+                else:
+                    messagebox.showinfo(title="Verificacion",message="El documento ya existe")
+                flagReporteSedeGuapiles=False
+            elif pOpcion=="Dirección General de Educación Vial, licencias Limón":
+                global flagReporteSedeLimon
+                if flagReporteSedeLimon==True:
+                    funciones.reporteSedeLimon(licencias)
+                    messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
+                else:
+                    messagebox.showinfo(title="Verificacion",message="El documento ya existe")
+                flagReporteSedeLimon=False
+            elif pOpcion=="Dirección General de Educación Vial, licencias Liberia":
+                global flagReporteSedeLiberia
+                if flagReporteSedeLiberia==True:
+                    funciones.reporteSedeLiberia(licencias)
+                    messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
+                else:
+                    messagebox.showinfo(title="Verificacion",message="El documento ya existe")
+                flagReporteSedeLiberia=False
+            elif pOpcion=="Dirección General de Educación Vial, licencias Nicoya":
+                global flagReporteSedeNicoya
+                if flagReporteSedeNicoya==True:
+                    funciones.reporteSedeNicoya(licencias)
+                    messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
+                else:
+                    messagebox.showinfo(title="Verificacion",message="El documento ya existe")
+                flagReporteSedeNicoya=False
+            elif pOpcion=="Dirección General de Educación Vial, licencias Puntarenas":
+                global flagReporteSedePuntarenas
+                if flagReporteSedePuntarenas==True:
+                    funciones.reporteSedePuntarenas(licencias)
+                    messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
+                else:
+                    messagebox.showinfo(title="Verificacion",message="El documento ya existe")
+                flagReporteSedePuntarenas=False
+            elif pOpcion=="Dirección General de Educación Vial, licencias Pérez Zeledón":
+                global flagReporteSedePerezZeledon
+                if flagReporteSedePerezZeledon==True:
+                    funciones.reporteSedePerezZeledon(licencias)
+                    messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
+                else:
+                    messagebox.showinfo(title="Verificacion",message="El documento ya existe")
+                flagReporteSedePerezZeledon=False
+            elif pOpcion=="Dirección General de Educación Vial, licencias Río Claro de Golfito":
+                global flagReporteSedeGolfito
+                if flagReporteSedeGolfito==True:
+                    funciones.reporteSedeGolfito(licencias)
+                    messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
+                else:
+                    messagebox.showinfo(title="Verificacion",message="El documento ya existe")
+                flagReporteSedeGolfito=False
+            elif pOpcion=="Dirección General de Educación Vial, licencias San Carlos":
+                global flagReporteSedeSanCarlos
+                if flagReporteSedeSanCarlos==True:
+                    funciones.reporteSedeSanCarlos(licencias)
+                    messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
+                else:
+                    messagebox.showinfo(title="Verificacion",message="El documento ya existe")
+                flagReporteSedeSanCarlos=False
+            
+##            opciones = {
+##                "Dirección General de Educación Vial, licencias sede central": ["ESReportePersonalidades"],
+##                2: ["ESPorCategorias"],
+##                3: ["ESReportePersona"],
+##                4: ["ESReporteTotal"],
+##                5: ["SalirReporte"]
+##            }
+##            
+##            funciones.opciones[pOpcion](licencias)
+##        
+        def activarBotonSede(event):
+            """
+            Funcionalidad: Activa el botón para buscar solo si la sede a buscar no es vacía
+            """
+            if event.widget.get() != "":
+                bConsultar.configure(state=tk.NORMAL)
+            else:
+                bConsultar.configure(state=tk.DISABLED)
+
+        repSede = tk.Toplevel()
+        repSede.title("Reporte por sede")
+        repSede.configure(bg="white")
+        repSede.resizable(True, True)
+        repSede.grab_set()
+        repSede.geometry("450x200")
+
+        texto = Label(repSede, text="Seleccione la opcion con la sede a consultar", bg="white", font=("Arial", 10))
+        texto.place(x=60, y=40)
+        
+        
+        cajaOpciones= ttk.Combobox(repSede,width=60, values=["Dirección General de Educación Vial, licencias sede central", "Dirección General de Educación Vial, licencias Alajuela",
+                                                    "Dirección General de Educación Vial, licencias Cartago", "Dirección General de Educación Vial, licencias Heredia",
+                                                    "Dirección General de Educación Vial, licencias San Ramón", "Dirección General de Educación Vial, licencias Guápiles",
+                                                    "Dirección General de Educación Vial, licencias Limón", "Dirección General de Educación Vial, licencias Liberia",
+                                                    "Dirección General de Educación Vial, licencias Nicoya", "Dirección General de Educación Vial, licencias Puntarenas",
+                                                    "Dirección General de Educación Vial, licencias Pérez Zeledón", "Dirección General de Educación Vial, licencias Río Claro de Golfito",
+                                                    "Dirección General de Educación Vial, licencias San Carlos"])
+        cajaOpciones.bind("<<ComboboxSelected>>", activarBotonSede)
+        cajaOpciones.place(x=30, y=100)
+        bConsultar = Button(repSede, text="Consultar", state=tk.DISABLED ,width=10, height=1, font=("Arial", 8), activebackground="lightgreen",bg="lightblue", command=lambda : procesoLicSedes(cajaOpciones.get()))
+        bConsultar.place(x=180, y=150)
+
+    def salirProgramaReportes():
+        CReportes.destroy()
 
     bTotalLic = Button(CReportes, text="Totalidad de licencias", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray", command=opcionReporteTotal)
     bTotalLic.configure(cursor="hand2")
     bTotalLic.place(x=130, y=120)
 
     bTipoLic = Button(CReportes, text="Por tipo de licencia", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=opcionReporteTipoLicencias)
+
+    #bTipoLic = Button(CReportes, text="Por tipo de licencia", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=procesoTipoLic)
+
     bTipoLic.configure(cursor="hand2")
     bTipoLic.place(x=340, y=120)
 
@@ -341,15 +549,15 @@ def menuReportes():
     bDonantes.configure(cursor="hand2")
     bDonantes.place(x=340, y=220)
 
-    bLicAnulada = Button(CReportes, text="Licencia anulada", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray")
+    bLicAnulada = Button(CReportes, text="Licencia anulada", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=procesoLicAnulada)
     bLicAnulada.configure(cursor="hand2")
     bLicAnulada.place(x=130, y=320)
 
-    bLicSede = Button(CReportes, text="Licencias por sede", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray")
+    bLicSede = Button(CReportes, text="Licencias por sede", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=reporteLicSede)
     bLicSede.configure(cursor="hand2")
     bLicSede.place(x=340, y=320)
 
-    bSalir = Button(CReportes, text="Salir", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=salirPrograma)
+    bSalir = Button(CReportes, text="Salir", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray",command=salirProgramaReportes)
     bSalir.configure(cursor="hand2")
     bSalir.place(x=240, y=420)
     
