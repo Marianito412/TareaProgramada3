@@ -158,6 +158,213 @@ def reporteAnulado(pLicencias):
     reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "FechaNac", "FechaExp", "FechaVenc", "TipoLicen", "TipoSangre", "Donador", "Sede"], extraerDatosAnulados, [filtrarAnulado])
     archivos.guardarTexto("ReporteAnulado", ".csv", reporte)
 
+def reporteSedeCentral(pLicencias):
+    def cambioDonador(pDato):
+        if pDato== False:
+            return "No es donador"
+        else:
+            return "Es donador"
+    def extraerDatosSedeCentral(pPersona: Licencia):
+        return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
+    def filtrarSedeCentral(pPersona: Licencia):
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias sede central":
+            return True
+        else:
+            return False
+    reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "FechaNac", "FechaExp", "FechaVenc", "TipoLicen", "TipoSangre", "Donador", "Sede","Puntaje"], extraerDatosSedeCentral, [filtrarSedeCentral])
+    archivos.guardarTexto("reporteSedeCentral", ".csv", reporte)
+
+def reporteSedeAlajuela(pLicencias):
+    def cambioDonador(pDato):
+        if pDato== False:
+            return "No es donador"
+        else:
+            return "Es donador"
+    def extraerDatosSedeAlajuela(pPersona: Licencia):
+        return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
+    def filtrarSedeAlajuela(pPersona: Licencia):
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias Alajuela":
+            return True
+        else:
+            return False
+    reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "FechaNac", "FechaExp", "FechaVenc", "TipoLicen", "TipoSangre", "Donador", "Sede","Puntaje"], extraerDatosSedeAlajuela, [filtrarSedeAlajuela])
+    archivos.guardarTexto("reporteSedeAlajuela", ".csv", reporte)
+
+def reporteSedeCartago(pLicencias):
+    def cambioDonador(pDato):
+        if pDato== False:
+            return "No es donador"
+        else:
+            return "Es donador"
+    def extraerDatosSedeCartago(pPersona: Licencia):
+        return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
+    def filtrarSedeCartago(pPersona: Licencia):
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias Cartago":
+            return True
+        else:
+            return False
+    reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "FechaNac", "FechaExp", "FechaVenc", "TipoLicen", "TipoSangre", "Donador", "Sede","Puntaje"], extraerDatosSedeCartago, [filtrarSedeCartago])
+    archivos.guardarTexto("reporteSedeCartago", ".csv", reporte)
+
+def reporteSedeHeredia(pLicencias):
+    def cambioDonador(pDato):
+        if pDato== False:
+            return "No es donador"
+        else:
+            return "Es donador"
+    def extraerDatosSedeHeredia(pPersona: Licencia):
+        return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
+    def filtrarSedeHeredia(pPersona: Licencia):
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias Heredia":
+            return True
+        else:
+            return False
+    reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "FechaNac", "FechaExp", "FechaVenc", "TipoLicen", "TipoSangre", "Donador", "Sede","Puntaje"], extraerDatosSedeHeredia, [filtrarSedeHeredia])
+    archivos.guardarTexto("reporteSedeHeredia", ".csv", reporte)
+
+def reporteSedeSanRamon(pLicencias):
+    def cambioDonador(pDato):
+        if pDato== False:
+            return "No es donador"
+        else:
+            return "Es donador"
+    def extraerDatosSedeSanRamon(pPersona: Licencia):
+        return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
+    def filtrarSedeSanRamon(pPersona: Licencia):
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias San Ramón":
+            return True
+        else:
+            return False
+    reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "FechaNac", "FechaExp", "FechaVenc", "TipoLicen", "TipoSangre", "Donador", "Sede","Puntaje"], extraerDatosSedeSanRamon, [filtrarSedeSanRamon])
+    archivos.guardarTexto("reporteSedeSanRamon", ".csv", reporte)
+
+def reporteSedeGuapiles(pLicencias):
+    def cambioDonador(pDato):
+        if pDato== False:
+            return "No es donador"
+        else:
+            return "Es donador"
+    def extraerDatosSedeGuapiles(pPersona: Licencia):
+        return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
+    def filtrarSedeGuapiles(pPersona: Licencia):
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias Guápiles":
+            return True
+        else:
+            return False
+    reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "FechaNac", "FechaExp", "FechaVenc", "TipoLicen", "TipoSangre", "Donador", "Sede","Puntaje"], extraerDatosSedeGuapiles, [filtrarSedeGuapiles])
+    archivos.guardarTexto("reporteSedeGuapiles", ".csv", reporte)
+
+def reporteSedeLimon(pLicencias):
+    def cambioDonador(pDato):
+        if pDato== False:
+            return "No es donador"
+        else:
+            return "Es donador"
+    def extraerDatosSedeLimon(pPersona: Licencia):
+        return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
+    def filtrarSedeLimon(pPersona: Licencia):
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias Limón":
+            return True
+        else:
+            return False
+    reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "FechaNac", "FechaExp", "FechaVenc", "TipoLicen", "TipoSangre", "Donador", "Sede","Puntaje"], extraerDatosSedeLimon, [filtrarSedeLimon])
+    archivos.guardarTexto("reporteSedeLimon", ".csv", reporte)
+
+def reporteSedeLiberia(pLicencias):
+    def cambioDonador(pDato):
+        if pDato== False:
+            return "No es donador"
+        else:
+            return "Es donador"
+    def extraerDatosSedeLiberia(pPersona: Licencia):
+        return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
+    def filtrarSedeLiberia(pPersona: Licencia):
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias Liberia":
+            return True
+        else:
+            return False
+    reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "FechaNac", "FechaExp", "FechaVenc", "TipoLicen", "TipoSangre", "Donador", "Sede","Puntaje"], extraerDatosSedeLiberia, [filtrarSedeLiberia])
+    archivos.guardarTexto("reporteSedeLiberia", ".csv", reporte)
+
+def reporteSedeNicoya(pLicencias):
+    def cambioDonador(pDato):
+        if pDato== False:
+            return "No es donador"
+        else:
+            return "Es donador"
+    def extraerDatosSedeNicoya(pPersona: Licencia):
+        return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
+    def filtrarSedeNicoya(pPersona: Licencia):
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias Nicoya":
+            return True
+        else:
+            return False
+    reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "FechaNac", "FechaExp", "FechaVenc", "TipoLicen", "TipoSangre", "Donador", "Sede","Puntaje"], extraerDatosSedeNicoya, [filtrarSedeNicoya])
+    archivos.guardarTexto("reporteSedeNicoya", ".csv", reporte)
+
+def reporteSedePuntarenas(pLicencias):
+    def cambioDonador(pDato):
+        if pDato== False:
+            return "No es donador"
+        else:
+            return "Es donador"
+    def extraerDatosSedePuntarenas(pPersona: Licencia):
+        return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
+    def filtrarSedePuntarenas(pPersona: Licencia):
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias Puntarenas":
+            return True
+        else:
+            return False
+    reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "FechaNac", "FechaExp", "FechaVenc", "TipoLicen", "TipoSangre", "Donador", "Sede","Puntaje"], extraerDatosSedePuntarenas, [filtrarSedePuntarenas])
+    archivos.guardarTexto("reporteSedePuntarenas", ".csv", reporte)
+
+def reporteSedePerezZeledon(pLicencias):
+    def cambioDonador(pDato):
+        if pDato== False:
+            return "No es donador"
+        else:
+            return "Es donador"
+    def extraerDatosSedePerezZeledon(pPersona: Licencia):
+        return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
+    def filtrarSedePerezZeledon(pPersona: Licencia):
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias Pérez Zeledón":
+            return True
+        else:
+            return False
+    reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "FechaNac", "FechaExp", "FechaVenc", "TipoLicen", "TipoSangre", "Donador", "Sede","Puntaje"], extraerDatosSedePerezZeledon, [filtrarSedePerezZeledon])
+    archivos.guardarTexto("reporteSedePerezZeledon", ".csv", reporte)
+
+def reporteSedeGolfito(pLicencias):
+    def cambioDonador(pDato):
+        if pDato== False:
+            return "No es donador"
+        else:
+            return "Es donador"
+    def extraerDatosSedeGolfito(pPersona: Licencia):
+        return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
+    def filtrarSedeGolfito(pPersona: Licencia):
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias Río Claro de Golfito":
+            return True
+        else:
+            return False
+    reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "FechaNac", "FechaExp", "FechaVenc", "TipoLicen", "TipoSangre", "Donador", "Sede","Puntaje"], extraerDatosSedeGolfito, [filtrarSedeGolfito])
+    archivos.guardarTexto("reporteRioClaroDeGolfito", ".csv", reporte)
+
+def reporteSedeSanCarlos(pLicencias):
+    def cambioDonador(pDato):
+        if pDato== False:
+            return "No es donador"
+        else:
+            return "Es donador"
+    def extraerDatosSedeSanCarlos(pPersona: Licencia):
+        return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarNacimiento(), pPersona.mostrarExpedicion(), pPersona.mostrarVencimiento(),pPersona.mostrarLicencia(), pPersona.mostrarSangre(), cambioDonador(pPersona.mostrarDonador()), pPersona.mostrarSede(), pPersona.mostrarPuntaje()]
+    def filtrarSedeSanCarlos(pPersona: Licencia):
+        if pPersona.mostrarSede()=="Dirección General de Educación Vial, licencias San Carlos":
+            return True
+        else:
+            return False
+    reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "FechaNac", "FechaExp", "FechaVenc", "TipoLicen", "TipoSangre", "Donador", "Sede","Puntaje"], extraerDatosSedeSanCarlos, [filtrarSedeSanCarlos])
+    archivos.guardarTexto("reporteSedeSanCarlos", ".csv", reporte)
 
 if __name__ == "__main__":
     lista = crearLicencias([], 10)
