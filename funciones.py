@@ -12,7 +12,6 @@ import datetime
 from clases import Licencia
 import datetime
 import pdfkit
-import os
 #import pandas as pd
 
 x = datetime.datetime.now()
@@ -43,6 +42,11 @@ def crearTag(pEtiqueta, pContenido, pAtributo=""):
     return f"<{pEtiqueta} {pAtributo}>\n\t{pContenido}\n</{pEtiqueta}>"
 
 def conseguirTipoLicencias():
+    """
+    Funcionalidad: Conseguir los tipos de licencias y cargarlos a un archivo XML
+    Entradas: NA
+    Salidas: tipoLicencias (list): La lista de los tipos de licencias
+    """
     url = "https://practicatest.cr/blog/licencias/tipos-licencia-conducir-costa-rica"
     pagina = requests.get(url).content
     pagina = bs4.BeautifulSoup(pagina, "html.parser")
@@ -66,6 +70,11 @@ def conseguirTipoLicencias():
     return tipoLicencias
 
 def generarHTML(persona: Licencia):
+    """
+    Funcionalidad: Genera el HTML sobre el cual generar el PDF
+    Entradas: persona (Licencia): La licencia para generar el html
+    Salidas: NA
+    """
     plantilla = archivos.cargarTexto("plantilla", ".html")
     plantilla = plantilla.format(
         cedula=f"CI-{persona.mostrarCedula()[0]}{persona.mostrarCedula()[2:6]}{persona.mostrarCedula()[7:]}",
@@ -82,6 +91,13 @@ def generarHTML(persona: Licencia):
     archivos.guardarTexto("generado", ".html", plantilla, encoding="utf-8")
 
 def generarPDF(pLicencias, pCedula):
+    """
+    Funcionalidad: Generar el pdf con la información de la persona
+    Entradas:
+    -pLicencias(list): La lista de licencias
+    -pCedula(str): La cédula de la licencia a generar
+    Salidas: NA
+    """
     path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
     config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
     for persona in pLicencias:
@@ -93,53 +109,116 @@ def generarPDF(pLicencias, pCedula):
             generarHTML(persona)
             pdfkit.from_file("generado.html", "Licencia.pdf", css="style.css", configuration=config)
             return True
-    #generarHTML(pLicencias[0])
-    #pdfkit.from_file("generado.html", "test.pdf", configuration=config, options={"user-style-sheet": "style.css"})
-    #print()
     print(pCedula)
     return False
 
 def filtrarLista(pLista, pFiltros=[]):
+    """
+    Funcionalidad: Filtra una lista dada basado en funciones filtro
+    Entradas:
+    -pLista(list): La lista a filtrar
+    -pFiltros(list): La lista de filtros 
+    Salidas:
+    -licencia(Licencia): La licencia que cumple con los requisitos
+    """
     for licencia in pLista:
         if all([filtro(licencia) for filtro in pFiltros]):
             yield licencia
 
 def generarFila(pAtributos):
+    """
+    Funcionalidad: Genera una fila de un csv
+    Entradas: -pAtributos(list): La lista de atributos
+    Salidas:
+    return(str): El texto de la fila
+    """
     separador = ", "
     return separador.join([str(i) for i in pAtributos])
 
 def generarReporte(pLista: list, pEncabezados: list, pExtraerDatos, pFiltros):
+    """
+    Funcionalidad: Genera un reporte csv
+    Entradas:
+    -pLista(list): La lista de personas
+    -pEncabezados(list): La lista de encabezados del reporte
+    -pExtraerDatos(func): La función que extrae los datos necesarios
+    -pFiltros(list): La lista de filtros a usar
+    Salidas:
+    .archivo(str): String con el reporte csv
+    """
     archivo = generarFila(pEncabezados) + "\n"
     for licencia in filtrarLista(pLista, pFiltros):
         archivo += generarFila(pExtraerDatos(licencia)) + "\n"
     return archivo
 
 def conseguirEdad(persona: Licencia):
-    return int(persona.mostrarNacimiento().split("-")[-1])
+    """
+    Funcionalidad: La edad de la persona
+    Entradas:
+    -persona(Licencia): La persona
+    Salidas:
+    return(int): La edad de la persona
+    """
+    return int(persona.mostrarNacimiento().split("-")[-1])-2023
 
 def generarCorreo(persona: Licencia):
+    """
+    Funcionalidad: Genera un correo basado en el nombre
+    Entradas:
+    -persona(Licencia): La persona a generar
+    Salidas:
+    -return(str): El correo generado
+    """
     nombres = persona.mostrarNombre().split(" ")
     return f"{nombres[1]}{nombres[2][0]}{nombres[0][0]}@gmail.com"
 
 def determinarSede(pPersona: Licencia):
+    """
+    Funcionalidad: Determina la sede donde se saca una licencia
+    Entradas:
+    -pPersona(Licencia): La Licencia 
+    Salidas:
+    -return(str): La sede determinada
+    """
     provincia = int(pPersona.mostrarCedula()[0])
     sedesPorProvincia = {
-        1:["Dirección General de Educación Vial", ""],
-        8:["Dirección General de Educación Vial", ""],
-        9:["Dirección General de Educación Vial", ""],
-        2:["Dirección General de Educación Vial", ""],
-        3:["Dirección General de Educación Vial licencias Cartago"],
-        4:["Dirección General de Educación Vial licencias Heredia"],
-        5:["Dirección General de Educación Vial licencias Liberia",
-           "Dirección General de Educación Vial licencias Nicoya"],
-        6:["Dirección General de Educación Vial licencias Puntarenas",
-           "Dirección General de Educación Vial licencias Rio Claro"],
-        7:["Dirección General de Educación Vial licencias Guapiles",
-           "Dirección General de Educación Vial licencias Lim+ón"]
+        1:["Dirección General de Educación Vial, licencias sede central",
+           "Dirección General de Educación Vial, licencias Heredia"],
+
+        8:["Dirección General de Educación Vial, licencias sede central",
+            "Dirección General de Educación Vial, licencias Heredia"],
+
+        9:["Dirección General de Educación Vial, licencias sede central",
+           "Dirección General de Educación Vial, licencias Heredia"],
+
+        2:["Dirección General de Educación Vial, licencias San Carlos",
+            "Dirección General de Educación Vial, licencias Alajuela",
+            "Dirección General de Educación Vial, licencias San Ramón"],
+
+        3:["Dirección General de Educación Vial, licencias Cartago"],
+
+        4:["Dirección General de Educación Vial, licencias Heredia"],
+
+        5:["Dirección General de Educación Vial, licencias Liberia",
+           "Dirección General de Educación Vial, licencias Nicoya"],
+
+        6:["Dirección General de Educación Vial, licencias Puntarenas",
+           "Dirección General de Educación Vial, licencias Rio Claro"],
+
+        7:["Dirección General de Educación Vial, licencias Guapiles",
+           "Dirección General de Educación Vial, licencias Limón"]
     }
     return random.choice(sedesPorProvincia[provincia])
 
 def crearLicencias(pLista, pCantidad):
+    """
+    Funcionalidad: Crea una cantidad de licencias
+    Entradas:
+    -pLista: La lista de persona ya existentes
+    -pCantidad(int): La cantidad de personas a generar
+    Salidas:
+    -pLista(List): La lista de personas modificada
+    """
     tipoLicencias = conseguirTipoLicencias()
     for i in range(pCantidad):
         nuevaLicencia = Licencia()
@@ -161,6 +240,14 @@ def crearLicencias(pLista, pCantidad):
     return pLista
 
 def renovarLicencias(licencias, pCedula):
+    """
+    Funcionalidad: Renueva la licencia afectando la fecha de vencimiento
+    Entradas:
+    -licencias: Las licencias a buscar
+    -pCedula: La cedula a encontrar
+    Salidas:
+    -licencias: Licencias actualizadas
+    """
     for persona in licencias:
         if persona.mostrarCedula() == pCedula:
             persona.asignarExpedicion(x.strftime("%d-%m-%Y"))
@@ -176,7 +263,13 @@ def renovarLicencias(licencias, pCedula):
     return licencias
 
 def reporteTipoLicencia(pLicencias, tipoLicencia):
-    
+    """
+    Funcionalidad: Genera un reporte basado en el tipo de licencia
+    Entradas:
+    -pLicencias: Las licencias a usar en el reporte
+    -tipoLicencia: El tipo de licencia
+    Salidas: NA
+    """
     def extraerDatosTipoLicencia(pPersona: Licencia):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarLicencia()]
 
@@ -184,7 +277,12 @@ def reporteTipoLicencia(pLicencias, tipoLicencia):
     archivos.guardarTexto(f"Reporte{tipoLicencia}", ".csv", reporte, encoding="utf-8")
 
 def reporteSancion(pLicencias):
-
+    """
+    Funcionalidad: Genera un reporte de las persona con sanción
+    Entradas:
+    -pLicencias: Las licencias a usar
+    Salidas: NA
+    """
     def extraerDatosSancion(pPersona: Licencia):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarLicencia(), pPersona.mostrarPuntaje()]
 
@@ -192,7 +290,12 @@ def reporteSancion(pLicencias):
     archivos.guardarTexto("ReporteSanción", ".csv", reporte, encoding="utf-8")
 
 def reporteTotal(pLicencias):
-
+    """
+    Funcionalidad: Genera un reporte de toda la BD
+    Entradas:
+    -pLicencias: Las licencias a usar
+    Salidas: NA
+    """
     def extraerDatosTotal(pPersona: Licencia):
         return pPersona.indicarDatos()
 
@@ -200,6 +303,10 @@ def reporteTotal(pLicencias):
     archivos.guardarTexto("ReporteTotal", ".csv", reporte, encoding="utf-8")
 
 def reporteDonador(pLicencias):
+    """
+    Funcionalidad: Genera el reporte de donadores
+    Entradas: pLicencias: Las licencias a generar
+    """
     def extraerDatosDonantes(pPersona: Licencia):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarLicencia()]
     def filtrarDonante(pPersona: Licencia):
@@ -211,6 +318,10 @@ def reporteDonador(pLicencias):
     archivos.guardarTexto("ReporteDonante", ".csv", reporte)
 
 def reporteAnulado(pLicencias):
+    """
+    Funcionalidad: Genera el reporte de personas con licencia anuladad
+    Entradas: pLicencias: Las licencias a generar
+    """
     def cambioDonador(pDato):
         if pDato== False:
             return "No es donador"
@@ -227,6 +338,9 @@ def reporteAnulado(pLicencias):
     archivos.guardarTexto("ReporteAnulado", ".csv", reporte)
 
 def reporteSedeCentral(pLicencias):
+    """
+    Funcionalidad: Genera un reporte basado en una sede
+    """
     def cambioDonador(pDato):
         if pDato== False:
             return "No es donador"
@@ -243,6 +357,9 @@ def reporteSedeCentral(pLicencias):
     archivos.guardarTexto("reporteSedeCentral", ".csv", reporte)
 
 def reporteSedeAlajuela(pLicencias):
+    """
+    Funcionalidad: Genera un reporte basado en una sede
+    """
     def cambioDonador(pDato):
         if pDato== False:
             return "No es donador"
@@ -259,6 +376,9 @@ def reporteSedeAlajuela(pLicencias):
     archivos.guardarTexto("reporteSedeAlajuela", ".csv", reporte)
 
 def reporteSedeCartago(pLicencias):
+    """
+    Funcionalidad: Genera un reporte basado en una sede
+    """
     def cambioDonador(pDato):
         if pDato== False:
             return "No es donador"
@@ -275,6 +395,9 @@ def reporteSedeCartago(pLicencias):
     archivos.guardarTexto("reporteSedeCartago", ".csv", reporte)
 
 def reporteSedeHeredia(pLicencias):
+    """
+    Funcionalidad: Genera un reporte basado en una sede
+    """
     def cambioDonador(pDato):
         if pDato== False:
             return "No es donador"
@@ -291,6 +414,9 @@ def reporteSedeHeredia(pLicencias):
     archivos.guardarTexto("reporteSedeHeredia", ".csv", reporte)
 
 def reporteSedeSanRamon(pLicencias):
+    """
+    Funcionalidad: Genera un reporte basado en una sede
+    """
     def cambioDonador(pDato):
         if pDato== False:
             return "No es donador"
@@ -307,6 +433,9 @@ def reporteSedeSanRamon(pLicencias):
     archivos.guardarTexto("reporteSedeSanRamon", ".csv", reporte)
 
 def reporteSedeGuapiles(pLicencias):
+    """
+    Funcionalidad: Genera un reporte basado en una sede
+    """
     def cambioDonador(pDato):
         if pDato== False:
             return "No es donador"
@@ -323,6 +452,9 @@ def reporteSedeGuapiles(pLicencias):
     archivos.guardarTexto("reporteSedeGuapiles", ".csv", reporte)
 
 def reporteSedeLimon(pLicencias):
+    """
+    Funcionalidad: Genera un reporte basado en una sede
+    """
     def cambioDonador(pDato):
         if pDato== False:
             return "No es donador"
@@ -339,6 +471,9 @@ def reporteSedeLimon(pLicencias):
     archivos.guardarTexto("reporteSedeLimon", ".csv", reporte)
 
 def reporteSedeLiberia(pLicencias):
+    """
+    Funcionalidad: Genera un reporte basado en una sede
+    """
     def cambioDonador(pDato):
         if pDato== False:
             return "No es donador"
@@ -355,6 +490,9 @@ def reporteSedeLiberia(pLicencias):
     archivos.guardarTexto("reporteSedeLiberia", ".csv", reporte)
 
 def reporteSedeNicoya(pLicencias):
+    """
+    Funcionalidad: Genera un reporte basado en una sede
+    """
     def cambioDonador(pDato):
         if pDato== False:
             return "No es donador"
@@ -371,6 +509,9 @@ def reporteSedeNicoya(pLicencias):
     archivos.guardarTexto("reporteSedeNicoya", ".csv", reporte)
 
 def reporteSedePuntarenas(pLicencias):
+    """
+    Funcionalidad: Genera un reporte basado en una sede
+    """
     def cambioDonador(pDato):
         if pDato== False:
             return "No es donador"
@@ -387,6 +528,9 @@ def reporteSedePuntarenas(pLicencias):
     archivos.guardarTexto("reporteSedePuntarenas", ".csv", reporte)
 
 def reporteSedePerezZeledon(pLicencias):
+    """
+    Funcionalidad: Genera un reporte basado en una sede
+    """
     def cambioDonador(pDato):
         if pDato== False:
             return "No es donador"
@@ -403,6 +547,9 @@ def reporteSedePerezZeledon(pLicencias):
     archivos.guardarTexto("reporteSedePerezZeledon", ".csv", reporte)
 
 def reporteSedeGolfito(pLicencias):
+    """
+    Funcionalidad: Genera un reporte basado en una sede
+    """
     def cambioDonador(pDato):
         if pDato== False:
             return "No es donador"
@@ -419,6 +566,9 @@ def reporteSedeGolfito(pLicencias):
     archivos.guardarTexto("reporteRioClaroDeGolfito", ".csv", reporte)
 
 def reporteSedeSanCarlos(pLicencias):
+    """
+    Funcionalidad: Genera un reporte basado en una sede
+    """
     def cambioDonador(pDato):
         if pDato== False:
             return "No es donador"
