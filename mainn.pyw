@@ -29,8 +29,10 @@ fondo.create_image(0, 0, image=bg, anchor="nw")
 licencias = archivos.lee("Licencias")
 archivos.graba("Licencias", licencias)
 
+flagReporteTotal= True
 flagDonantes= True
 flagTipoLic= True
+flagReporteSancion=True
 flagLicAnulada= True
 flagReporteSedeCentral= True
 flagReporteSedeAlajuela= True
@@ -183,7 +185,6 @@ def Renovar():
         -event: se recorre la funcion cada vez que hay un cambio
         """
         cedulas = [persona.mostrarCedula() for persona in licencias]
-        print (cedulas)
         if not validarCedula(FCedula.get()):
             etiquetaCedula.config(text="Formato: 0-0000-0000",fg="gray")
             BTRenovar.configure(state=tk.DISABLED)
@@ -208,10 +209,17 @@ def Renovar():
         -pPadron: padron de personas
         -pNumero: numero de personas a agregar
         """
-        funciones.renovarLicencias(licencias, FCedula.get())
-        archivos.graba("Licencias", licencias)
-        messagebox.showinfo(title="Verificacion",message="Se ha renovado con exito")
-        limpiarDatos2()
+        for persona in licencias:
+                if persona.mostrarCedula()==FCedula.get():
+                    if persona.mostrarPuntaje()== 0:
+                        archivos.graba("Licencias", licencias)
+                        messagebox.showwarning(title="Verificacion",message="No se puede renovar porque su puntaje es 0")
+                        limpiarDatos2()
+                    else:
+                        funciones.renovarLicencias(licencias, FCedula.get())
+                        archivos.graba("Licencias", licencias)
+                        messagebox.showinfo(title="Verificacion",message="Se ha renovado con exito")
+                        limpiarDatos2()
 
     bLimpiar = Button(CRenovar, text="Limpiar", width=8, height=1, font=("Arial", 8), activebackground="lightpink",bg="lightgray",command=limpiarDatos2)
     bLimpiar.configure(cursor="hand2")
@@ -240,18 +248,31 @@ def generarPDF():
     textoCedula.place(x=20, y=80)
 
 
-    FCantidad = Entry(CPDF)
+    FCedula = Entry(CPDF)
 
-    BTCrear = Button(CPDF, text="Generar",width=8, height=1, font=("Arial", 8), activebackground="lightpink",bg="lightgray", command=lambda: procesoLicencias(licencias, FCantidad.get()))
+    BTCrear = Button(CPDF, text="Generar",width=8, height=1, font=("Arial", 8), activebackground="lightpink",bg="lightgray", command=lambda: procesoPDF(licencias, FCedula.get()))
     BTCrear.configure(cursor="hand2")
     BTCrear.place(x=100, y=210)
     BTCrear.configure(state=tk.DISABLED)
+
+    def validarCedula(pCedula):
+        """
+        Funcionalidad: valida una cédula contra regex
+        Entradas:
+        -pCedula(str): la cedula a validar
+        Salidas:
+        -pCedula: la cédula si cumple con las validaciones
+        """
+        if re.match(r"^\d{1}-\d{4}-\d{4}$", pCedula):
+            return True
+        else:
+            return False
 
     def limpiarDatos2():
         """
         Funcionalidad: Elimina los datos en el entry FCantidad
         """
-        FCantidad.delete(0, tk.END)
+        FCedula.delete(0, tk.END)
 
     def activarBotonCrear(event):
         """
@@ -259,28 +280,32 @@ def generarPDF():
         Entradas:
         -event: se recorre la funcion cada vez que hay un cambio
         """
-        if re.match(r"^\d{1}-\d{4}-\d{4}$", event.widget.get()):
-            BTCrear.configure(state=tk.NORMAL)
-            etiquetaPadron.config(text="")
-        else:
-            etiquetaPadron.config(text="Debe digitar una cédula válida",fg="gray")
+        cedulas = [persona.mostrarCedula() for persona in licencias]
+        if not validarCedula(FCedula.get()):
+            etiquetaCedula.config(text="Formato: 0-0000-0000",fg="gray")
             BTCrear.configure(state=tk.DISABLED)
 
-    etiquetaPadron=Label(CPDF,bg="white")
-    etiquetaPadron.place(x=100, y=160)
-    
-    FCantidad.bind("<KeyRelease>", activarBotonCrear)
-    
-    FCantidad.place(x=140, y=80)
+        elif not FCedula.get() in cedulas:
+                etiquetaCedula.config(text="La cedula no existe",fg="gray")
+        else:
+            BTCrear.configure(state=tk.NORMAL)
+            etiquetaCedula.config(text="")
 
-    def procesoLicencias(padron,pNumero):
+    etiquetaCedula=Label(CPDF,bg="white")
+    etiquetaCedula.place(x=100, y=160)
+    
+    FCedula.bind("<KeyRelease>", activarBotonCrear)
+    
+    FCedula.place(x=140, y=80)
+
+    def procesoPDF(padron,pNumero):
         """
         Funcionalidad: Manda a la funcion de crear padron y muestra un messagebox
         Entradas:
         -pPadron: padron de personas
         -pNumero: numero de personas a agregar
         """
-        resultado = funciones.generarPDF(licencias, FCantidad.get())
+        resultado = funciones.generarPDF(licencias, FCedula.get())
         messagebox.showinfo(title="Verificacion",message="Se ha creado con exito"if resultado else "No se encontró a la persona")
         limpiarDatos2()
 
@@ -306,7 +331,7 @@ def opcionReporteTipoLicencias():
 
     def procesoReporte():
         funciones.reporteTipoLicencia(licencias, cajaOpciones.get())
-        messagebox.showinfo("Reporte generado", "Reporte generado")
+        messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
 
     cajaOpciones = ttk.Combobox(CReporteTipo, values=funciones.conseguirTipoLicencias())
     cajaOpciones.place(x=60, y=120)
@@ -318,12 +343,22 @@ def opcionReporteTipoLicencias():
     BTCrear.configure(state=tk.DISABLED)
 
 def opcionExamenPorSancion():
-    funciones.reporteSancion(licencias)
-    messagebox.showinfo("Reporte generado", "Reporte generado")
+    global flagReporteSancion
+    if flagReporteSancion==True:
+        funciones.reporteSancion(licencias)
+        messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
+    else:
+        messagebox.showinfo(title="Verificacion",message="El documento ya existe")
+    flagReporteSancion=False
 
 def opcionReporteTotal():
-    funciones.reporteTotal(licencias)
-    messagebox.showinfo("Reporte generado", "Reporte generado")
+    global flagReporteTotal
+    if flagReporteTotal==True:
+        funciones.reporteTotal(licencias)
+        messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
+    else:
+        messagebox.showinfo(title="Verificacion",message="El documento ya existe")
+    flagReporteTotal=False
 
 def menuReportes():
     CReportes = tk.Toplevel()

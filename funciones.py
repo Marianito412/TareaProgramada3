@@ -13,7 +13,6 @@ import datetime
 from clases import Licencia
 import datetime
 import pdfkit
-#import pandas as pd
 
 x = datetime.datetime.now()
 
@@ -261,7 +260,6 @@ def renovarLicencias(licencias, pCedula):
                 annio= str(int(x.strftime("%Y")) + 3)
             persona.asignarVencimiento(x.strftime("%d-%m")+"-"+annio)
             print(persona.indicarDatos())
-    print(licencias)
     return licencias
 
 def reporteTipoLicencia(pLicencias, tipoLicencia):
@@ -287,9 +285,10 @@ def reporteSancion(pLicencias):
     """
     def extraerDatosSancion(pPersona: Licencia):
         return [pPersona.mostrarCedula(), pPersona.mostrarNombre(), pPersona.mostrarLicencia(), pPersona.mostrarPuntaje()]
-
+    
     reporte = generarReporte(pLicencias, ["Cédula", "Nombre", "Tipo de licencia", "Puntaje"], extraerDatosSancion, [lambda x: x.mostrarPuntaje()<=6 and x.mostrarPuntaje()>0])
     archivos.guardarTexto("ReporteSanción", ".csv", reporte)
+
 
 def reporteTotal(pLicencias):
     """
