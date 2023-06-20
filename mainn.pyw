@@ -11,7 +11,6 @@ import re
 import funciones
 from clases import Licencia
 
-
 raiz = Tk()
 raiz.title("COSEVI")
 raiz.configure(bg="white")
@@ -26,8 +25,6 @@ fondo.pack()
 bg = PhotoImage(file="fondo.png")
 fondo.create_image(0, 0, image=bg, anchor="nw")
 
-
-
 licencias=[]
 
 flagReporteTotal= True
@@ -40,6 +37,7 @@ flagReporteSedeAlajuela= True
 flagReporteSedeCartago= True
 flagReporteSedeHeredia= True
 flagReporteSedeSanRamon= True
+flagReporteSedeSanCarlos = True
 flagReporteSedeGuapiles= True
 flagReporteSedeLimon= True
 flagReporteSedeLiberia= True
@@ -131,7 +129,6 @@ def opcionCrearLicencias():
 def opcionCrearXML():
     funciones.conseguirTipoLicencias()
     messagebox.showinfo(title="Verificacion",message="Se ha creado con exito")
-    ...
 
 def Renovar():
     """
@@ -150,7 +147,6 @@ def Renovar():
 
     textoCedula = Label(CRenovar,pady=15, text="Cedula: ", bg="white", font=("Arial", 10),)
     textoCedula.place(x=35, y=80)
-
 
     FCedula = Entry(CRenovar)
 
@@ -603,6 +599,21 @@ def salirPrograma():
     raiz.destroy()
     
 
+def acercaDe():
+    CAcercaDe = tk.Toplevel()
+    CAcercaDe.title("Acerca De")
+    CAcercaDe.configure(bg="white")
+    CAcercaDe.iconbitmap("Cosevi.ico")
+    CAcercaDe.resizable(False, False)
+    CAcercaDe.geometry("400x400")
+    CAcercaDe.grab_set()
+
+    LNicole = Label(CAcercaDe, text="Nicole Parra, 2023223291", bg="white", font=("Arial", 15))
+    LNicole.place(x=100, y=100)
+
+    LNicole = Label(CAcercaDe, text="Mariano Soto, 2020142918", bg="white", font=("Arial", 15))
+    LNicole.place(x=100, y=200)
+
 #Ventana principal
 
 bXML = Button(raiz, text="Crear XML", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray", command=opcionCrearXML)
@@ -625,7 +636,7 @@ bExcel = Button(raiz, text="Reportes de Excel", width=20, height=3, font=("Arial
 bExcel.configure(cursor="hand2")
 bExcel.place(x=130, y=320)
 
-bAcerca = Button(raiz, text="Acerca de", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray")
+bAcerca = Button(raiz, text="Acerca de", width=20, height=3, font=("Arial", 10), activebackground="#fbd404",bg="lightgray", command=acercaDe)
 bAcerca.configure(cursor="hand2")
 bAcerca.place(x=340, y=320)
 
